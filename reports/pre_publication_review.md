@@ -1,98 +1,77 @@
 # Pre-Publication Academic Review
 
 **Author:** Scott Brodie Forsyth  
-**Review date:** July 2026  
-**Purpose:** Journal submission readiness assessment after Phase 1 corrections
+**Review date:** July 2026 (updated after empirical calibration)  
+**Purpose:** Journal submission readiness assessment
 
 ---
 
 ## Verdict
 
-**Suitable for submission as a methods/software design paper** to outlets such as *Demographic Research* (software/methods note), *Journal of Open Source Software*, or as an arXiv methods preprint—**after** the corrections listed below (now implemented in this revision).
+**Suitable for submission as a conditional-projection / methods paper** describing an open, reproducible ethnic cohort-component system calibrated to Census 2021 and ONS/Nomis official statistics for England and Wales—provided limitations are stated prominently (no hindcast, E&W only, static mortality, rule-based partnership/child ethnicity, not benchmarked to ONS aggregate NPP totals).
 
-**Not suitable** for submission as an empirical demography paper to *Population Studies* or *Demography* until Phase 4 historical validation and calibrated parameters exist.
+**Not suitable** for submission as a validated forecasting paper to *Population Studies* or *Demography* until historical hindcasts (2001→2011→2021) and fuller UK coverage are completed.
 
----
-
-## Corrections implemented (this revision)
-
-### References (CRITICAL — fixed)
-- Coleman (2010): corrected to *Population and Development Review* 36(3), 441–486
-- Rees et al. (2017): corrected to Swanson (Ed.), *The Frontiers of Applied Demography*, pp. 383–408; Norman, P. (not G.)
-- Wohland et al. (2010): corrected to University of Leeds Working Paper 10/02
-- Added: Haskey (2002), Rees et al. (2011), NEWETHPOP, ONS ABME, GSS ethnicity guidance
-- Removed incorrect Simpson (2007) as primary projection citation; reframed prior work
-
-### Mathematical notation (MAJOR — fixed)
-- Internal migration now $M^{int}$ throughout; deaths $D$ reserved for accounting identity only
-- Migration equation includes nation subscript $n$
-- Phase 1 implementation status table added to manuscript
-
-### Projection engine (CRITICAL — fixed)
-- Birth sex double-counting corrected (sex ratio at birth applied)
-- Child generation assigned from parent nativity rules
-- Population accounting identity verified each projection year
-- Emigration capped at cell population (prevents negative counts from fixed flows)
-
-### Data documentation (CRITICAL — fixed)
-- Nomis dataset ID corrected: NM_2132 (not NM_1694)
-- Scotland and Northern Ireland reclassified as not yet retrieved
-- Age band limitation documented: six broad bands, not single-year-of-age
-- ABME replaces LTIM for post-2020 migration calibration
-
-### Harmonisation (MAJOR — fixed)
-- Added `nomis_api_code` column (API codes 1–19 distinct from output codes 10001–50002)
-- Scope limited to England/Wales Census 2021 in mapping table
-
-### Visualisation (MINOR — fixed)
-- Age pyramid watermark added
-- Count axis formatted with thousands separators
-
-### Testing (MAJOR — fixed)
-- Added tests: birth sex split, accounting identity
-- API tests marked `@pytest.mark.integration`
-- 16 unit tests passing (12 projection + 4 integration when run)
+**Not suitable** for policy claims about specific immigration reforms (scenarios vary measurable demographic inputs, not legislation).
 
 ---
 
-## Remaining limitations (document honestly)
+## What is empirically grounded (verified July 2026)
 
-| Limitation | Impact | Resolution phase |
-|-----------|--------|------------------|
-| Placeholder parameters only | No empirical projections | Phase 4 calibration |
-| Fertility convergence not applied | Static ASFR in engine | Phase 4 |
-| Partnership weights without male stock | Simplified fertility input | Phase 7 |
-| Nomis sex=All persons only | No sex-disaggregated census base | Phase 2 |
-| No Scotland/NI base population | UK-wide totals incomplete | Phase 6 |
-| No historical hindcast | Cannot assess forecast accuracy | Phase 4 |
-| Illustrative horizon 2022–2050 only | Not yet 2122 | Phase 8 (after validation) |
+| Component | Source | Status |
+|-----------|--------|--------|
+| Base population mid-2022 (~60.28M E&W) | Census 2021 RM032 + Nomis MYE NM_2002_1 | Calibrated |
+| Ethnic shares at base (e.g. England White 81.0%) | RM032 harmonisation | Matches processed base |
+| Mortality | ONS National Life Tables 2020–2022 | Calibrated |
+| Fertility ASFR + ethnic scalars | Nomis NM_203_1 (2022) + RM032 proxy | Calibrated (proxy documented) |
+| Migration volumes | ONS 2022-based NPP variants | Scenario-specified |
+| Migration age/ethnic profiles | Census RM011 / RM010 | Calibrated |
+| Scenario tables to 2122 | Engine output | Reproduced in manuscript |
+| Automated tests | pytest | 32 passing |
+
+All manuscript table values (population and White share at 2030, 2040, 2050, 2075, 2100, 2122) match `outputs/*/projection_summary.md` within rounding.
+
+---
+
+## Honest limitations (must remain in manuscript)
+
+| Limitation | Impact |
+|-----------|--------|
+| No historical hindcast | Century-scale trajectories unvalidated |
+| England & Wales only | UK research question; incomplete geography |
+| Static mortality (2020–2022, no improvement) | Long-run totals diverge from ONS NPP |
+| ONS migration ramp 2022–2028 not modelled | Long-term volumes applied from year 1 |
+| Fertility convergence not applied | Static ethnic ASFR after calibration |
+| Rule-based partnership / child ethnicity | Not census household tables |
+| Fixed ethnic identity (diagonal Q) | No census identity switching |
+| Emigration capped at available stock | Realized outflow can fall below assumed level |
+| Aggregate totals not benchmarked to ONS NPP | Uses ONS migration *volumes*, not full NPP system |
+| RM032 age-band fertility proxy | 0–4 children approximated within under-25 band |
 
 ---
 
 ## Recommended submission framing
 
-**Title (methods paper):**  
-*A Reproducible Multistate Cohort-Component Framework for Conditional Ethnic Population Projections in the United Kingdom*
+**Title:** *UK Ethnic Demographic Change Under Alternative Migration and Demographic Scenarios, 2022–2122: Conditional Projections for England and Wales from Census 2021 and ONS 2022-Based Assumptions*
 
-**Abstract emphasis:**  
-Conditional trajectories under specified assumptions; open-source pipeline; Census 2021 data ingestion; preregistered scenario design—not forecasts.
+**Abstract emphasis:** Conditional trajectories under specified assumptions; open-source pipeline; official data calibration; scenario comparison—not predictions or ONS total-population forecasts.
 
 **Target outlets:**
 1. *Demographic Research* — Methods and Data section
-2. *Journal of Open Source Software* — if positioned as software
-3. arXiv (stat.AP or demography) — methods preprint
+2. arXiv (stat.AP / demography) — methods + conditional scenarios preprint
+3. *Journal of Open Source Software* — if positioned primarily as software
 
 ---
 
 ## Pre-push checklist
 
-- [x] All 20 tests pass (including ONS/Nomis parser validation)
-- [x] References fact-checked and corrected
-- [x] Data claims match retrieved files (manifests with SHA-256)
-- [x] LaTeX PDF compiles with figure
-- [x] Watermark on all illustrative outputs
-- [x] No politicised terminology
-- [x] Limitations section complete
+- [x] 32 tests pass
+- [x] References fact-checked
+- [x] Data claims match cached official tables (SHA-256 manifests)
+- [x] LaTeX PDF compiles with empirical figures (16 pages)
+- [x] Watermark on all projection outputs
+- [x] Manuscript claims aligned with implementation (migration timing, ONS scope)
+- [x] Comparison figures generated (`outputs/comparison/`)
 - [ ] ORCID added (author to provide)
-- [ ] Repository URL verified (author to confirm GitHub remote)
-- [ ] Preregistration on OSF (recommended before Phase 8 scenarios)
+- [ ] Historical hindcast completed (required before forecast framing)
+- [ ] Preregistration on OSF (recommended)

@@ -152,7 +152,7 @@ Every downloaded file includes: source organisation, dataset title, identifier, 
 | Validation | 4 | 0 | 0 | 0 | 0 | 0 |
 | Benchmark | 2 | 0 | 0 | 0 | 0 | 0 |
 
-**Conclusion:** Sufficient official data exists to build the base population for England and Wales (Phase 2) and to calibrate fertility and migration (Phase 4). Partnership, child-identification, and ethnic identity transition parameters require statistical estimation from census tables not yet processed. The illustrative Phase 1 scenario uses placeholder parameters and produces no empirical results.
+**Conclusion:** Sufficient official data exists to build the base population for England and Wales and to calibrate fertility, mortality, and migration under ONS 2022-based scenario variants. Partnership, child-identification, and ethnic identity transition parameters still require census household tables. Scotland, Northern Ireland, historical hindcasts, and probabilistic uncertainty remain outstanding. The illustrative demonstration scenario (`illustrative_demonstration.yml`) uses placeholder parameters for engine testing only; empirical scenarios use Census 2021 + ONS/Nomis calibration.
 
 ---
 
