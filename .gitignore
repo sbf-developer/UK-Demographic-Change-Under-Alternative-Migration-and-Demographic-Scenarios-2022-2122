@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+.pytest_cache/
+.coverage
+htmlcov/
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Raw census API cache (reproducible via data fetch)
+data/raw/**/cache/
+data/raw/**/cache*/
+
+# Keep illustrative figures for paper (explicitly tracked)
+# outputs/illustrative_demonstration/*.png

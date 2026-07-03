@@ -1,0 +1,49 @@
+---
+# Nomis NM_2132 dimension codes (discovered via API query testing, July 2026).
+# Ethnic codes 1-19 match ONS RM032 detailed categories.
+
+ETHNIC_CODES:
+  - "1"
+  - "2"
+  - "3"
+  - "4"
+  - "5"
+  - "6"
+  - "7"
+  - "8"
+  - "9"
+  - "10"
+  - "11"
+  - "12"
+  - "13"
+  - "14"
+  - "15"
+  - "16"
+  - "17"
+  - "18"
+  - "19"
+
+AGE_CODES: ["1", "2", "3", "4", "5"]
+SEX_CODES: ["0"]
+MEASURES_CODE: "20100"
+
+DIM_GEOGRAPHY: geography
+DIM_ETHNIC: c2021_eth_20
+DIM_AGE: c2021_age_6
+DIM_SEX: c_sex
+DIM_MEASURES: measures
+
+GEOGRAPHY_TYPE_REGIONS: TYPE480
+
+# Nomis internal region codes (TYPE480)
+REGION_CODES:
+  - "2013265921"  # North East
+  - "2013265922"  # North West
+  - "2013265923"  # Yorkshire and The Humber
+  - "2013265924"  # East Midlands
+  - "2013265925"  # West Midlands
+  - "2013265926"  # East
+  - "2013265927"  # London
+  - "2013265928"  # South East
+  - "2013265929"  # South West
+  - "2013265930"  # Wales

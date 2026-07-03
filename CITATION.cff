@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "UK Ethnic Demographic Change Under Alternative Migration and Demographic Scenarios, 2022–2122"
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - family-names: Forsyth
+    given-names: Scott Brodie
+repository-code: "https://github.com/sbf-developer/UK-Demographic-Change-Under-Alternative-Migration-and-Demographic-Scenarios-2022-2122"
+license: MIT
+version: 0.1.0
+date-released: 2026-07-03
+keywords:
+  - demography
+  - ethnicity
+  - population projection
+  - United Kingdom
+  - migration

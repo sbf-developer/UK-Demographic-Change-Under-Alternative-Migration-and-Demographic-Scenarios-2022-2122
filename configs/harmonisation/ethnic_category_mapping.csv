@@ -1,0 +1,20 @@
+source_country,source_census_year,original_category,original_category_code,harmonised_broad,harmonised_detailed,mapping_rationale,comparability_quality,uncertainty_flag,notes,nomis_api_code
+england_wales,2021,"White: English, Welsh, Scottish, Northern Irish or British",10001,white,white_british,Direct mapping to harmonised White category,high,False,Wording specific to England and Wales Census 2021,13
+england_wales,2021,White: Irish,10002,white,white_irish,Direct mapping,high,False,,14
+england_wales,2021,White: Gypsy or Irish Traveller,10003,white,white_gypsy_traveller,ONS broad group classification,moderate,True,Category not available in all UK nations,15
+england_wales,2021,White: Roma,10004,white,white_roma,New category in 2021; limited historical comparability,low,True,First appearance in Census 2021,16
+england_wales,2021,White: Other White,10005,white,white_other,Direct mapping,high,False,,17
+england_wales,2021,Mixed or Multiple ethnic groups: White and Black Caribbean,20001,mixed,mixed_white_black_caribbean,Direct mapping to Mixed broad group,high,False,,11
+england_wales,2021,Mixed or Multiple ethnic groups: White and Black African,20002,mixed,mixed_white_black_african,Direct mapping,high,False,,10
+england_wales,2021,Mixed or Multiple ethnic groups: White and Asian,20003,mixed,mixed_white_asian,Direct mapping,high,False,,9
+england_wales,2021,Mixed or Multiple ethnic groups: Other Mixed or Multiple ethnic groups,20004,mixed,mixed_other,Direct mapping,high,False,,12
+england_wales,2021,"Asian, Asian British or Asian Welsh: Indian",30001,asian,asian_indian,Direct mapping,high,False,,3
+england_wales,2021,"Asian, Asian British or Asian Welsh: Pakistani",30002,asian,asian_pakistani,Direct mapping,high,False,,4
+england_wales,2021,"Asian, Asian British or Asian Welsh: Bangladeshi",30003,asian,asian_bangladeshi,Direct mapping,high,False,,1
+england_wales,2021,"Asian, Asian British or Asian Welsh: Chinese",30004,asian,asian_chinese,Direct mapping,high,False,,2
+england_wales,2021,"Asian, Asian British or Asian Welsh: Other Asian",30005,asian,asian_other,Direct mapping,high,False,,5
+england_wales,2021,"Black, Black British, Black Welsh, Caribbean or African: African",40001,black,black_african,Direct mapping,high,False,,6
+england_wales,2021,"Black, Black British, Black Welsh, Caribbean or African: Caribbean",40002,black,black_caribbean,Direct mapping,high,False,,7
+england_wales,2021,"Black, Black British, Black Welsh, Caribbean or African: Other Black",40003,black,black_other,Direct mapping,high,False,,8
+england_wales,2021,Other ethnic group: Arab,50001,other,other_arab,ONS broad group classification,moderate,True,Arab category introduced in 2011,18
+england_wales,2021,Other ethnic group: Any other ethnic group,50002,other,other_other,Direct mapping,high,False,,19

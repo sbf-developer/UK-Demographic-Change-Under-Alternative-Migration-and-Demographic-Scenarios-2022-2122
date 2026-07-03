@@ -1,0 +1,51 @@
+# Illustrative demonstration scenario
+# WARNING: Methodological demonstration only. Not an empirical projection.
+
+name: illustrative_demonstration
+description: >
+  Minimal scenario to demonstrate the cohort-component projection engine.
+  All parameters are clearly labelled placeholders, not calibrated to UK data.
+  This scenario must never be presented as an empirical projection.
+
+base_year: 2022
+end_year: 2122
+watermark: "Methodological demonstration only. Not an empirical projection."
+placeholder: true
+
+nations:
+  - england
+  - wales
+
+ethnic_groups:
+  - white
+  - mixed
+  - asian
+  - black
+  - other
+
+migration:
+  annual_immigration: 5000
+  annual_emigration: 3000
+  composition:
+    white: 0.40
+    asian: 0.25
+    black: 0.15
+    mixed: 0.10
+    other: 0.10
+
+fertility:
+  convergence: moderate
+  uk_tfr: 1.49
+  kappa:
+    white: 0.05
+    asian: 0.03
+    black: 0.04
+    mixed: 0.06
+    other: 0.05
+
+identity:
+  mode: fixed
+  switching_rate: 0.0
+
+mortality: common
+seed: 42

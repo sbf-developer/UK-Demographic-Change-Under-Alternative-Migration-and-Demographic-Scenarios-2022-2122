@@ -1,0 +1,50 @@
+{
+  "contacts": [
+    {
+      "email": "census.customerservices@ons.gov.uk",
+      "name": "Michael Roskams",
+      "telephone": "+44 1329 444972"
+    }
+  ],
+  "description": "This dataset provides Census 2021 estimates that classify usual residents in England and Wales by ethnic group, by sex, and by age. The estimates are as at Census Day, 21 March 2021.",
+  "keywords": [
+    "ltla",
+    "ethnic_group_tb_20b,sex,resident_age_5c"
+  ],
+  "id": "RM032",
+  "last_updated": "2023-03-28T08:30:08.58Z",
+  "links": {
+    "editions": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/RM032/editions"
+    },
+    "latest_version": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/RM032/editions/2021/versions/1",
+      "id": "1"
+    },
+    "self": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/RM032"
+    }
+  },
+  "national_statistic": true,
+  "qmi": {},
+  "state": "published",
+  "title": "Ethnic group by sex by age",
+  "unit_of_measure": "Person",
+  "type": "cantabular_multivariate_table",
+  "is_based_on": {
+    "@type": "cantabular_multivariate_table",
+    "@id": "UR"
+  },
+  "canonical_topic": "7779",
+  "subtopics": [
+    "9497"
+  ],
+  "survey": "census",
+  "related_content": [
+    {
+      "description": "Definitions, variables and classifications to help when using Census 2021 data.",
+      "href": "https://www.ons.gov.uk/census/census2021dictionary",
+      "title": "Census 2021 dictionary"
+    }
+  ]
+}

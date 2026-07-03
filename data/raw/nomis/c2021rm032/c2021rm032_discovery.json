@@ -1,0 +1,232 @@
+{
+  "dataset_id": "NM_2132",
+  "dataset_code": "C2021RM032",
+  "dimensions": [
+    "GEOGRAPHY",
+    "C2021_ETH_20",
+    "C2021_AGE_6",
+    "C_SEX",
+    "MEASURES",
+    "FREQ"
+  ],
+  "definition": {
+    "structure": {
+      "header": {
+        "id": "NM_2132_1",
+        "prepared": "2026-07-03T22:36:42Z",
+        "sender": {
+          "contact": {
+            "email": "census.customerservices@ons.gov.uk",
+            "name": "Census Customer Services",
+            "telephone": "01329 444 972",
+            "uri": "http://www.ons.gov.uk/census"
+          },
+          "id": "NOMIS"
+        },
+        "test": "false"
+      },
+      "keyfamilies": {
+        "keyfamily": [
+          {
+            "agencyid": "NOMIS",
+            "annotations": {
+              "annotation": [
+                {
+                  "annotationtext": "Current (being actively updated)",
+                  "annotationtitle": "Status"
+                },
+                {
+                  "annotationtext": "Sex,Age,Ethnic group",
+                  "annotationtitle": "Keywords"
+                },
+                {
+                  "annotationtext": "Persons",
+                  "annotationtitle": "Units"
+                },
+                {
+                  "annotationtext": "census_2021_rm",
+                  "annotationtitle": "contenttype/sources"
+                },
+                {
+                  "annotationtext": "oa2021,lsoa2021,msoa2021,la2021,ward2021",
+                  "annotationtitle": "contenttype/geoglevel"
+                },
+                {
+                  "annotationtext": "All usual residents",
+                  "annotationtitle": "SubDescription"
+                },
+                {
+                  "annotationtext": "c2021rm032",
+                  "annotationtitle": "Mnemonic"
+                },
+                {
+                  "annotationtext": "About this dataset",
+                  "annotationtitle": "MetadataTitle0"
+                },
+                {
+                  "annotationtext": "This dataset provides Census 2021 estimates that classify usual residents in England and Wales by ethnic group, by sex, and by age. The estimates are as at Census Day, 21 March 2021.",
+                  "annotationtitle": "MetadataText0"
+                },
+                {
+                  "annotationtext": "Protecting personal data",
+                  "annotationtitle": "MetadataTitle1"
+                },
+                {
+                  "annotationtext": "Sometimes we need to make changes to data if it is possible to identify individuals. This is known as statistical disclosure control. In Census 2021, we:\n\n* Swapped records (targeted record swapping), for example, if a household was likely to be identified in datasets because it has unusual characteristics, we swapped the record with a similar one from a nearby small area. Very unusual households could be swapped with one in a nearby local authority.\n* Added small changes to some counts (cell key perturbation), for example, we might change a count of four to a three or a five. This might make small differences between tables depending on how the data are broken down when we applied perturbation.",
+                  "annotationtitle": "MetadataText1"
+                },
+                {
+                  "annotationtext": 2,
+                  "annotationtitle": "MetadataCount"
+                }
+              ]
+            },
+            "id": "NM_2132_1",
+            "components": {
+              "attribute": [
+                {
+                  "assignmentstatus": "Mandatory",
+                  "attachmentlevel": "Observation",
+                  "codelist": "CL_OBS_STATUS",
+                  "conceptref": "OBS_STATUS"
+                },
+                {
+                  "assignmentstatus": "Conditional",
+                  "attachmentlevel": "Observation",
+                  "codelist": "CL_OBS_CONF",
+                  "conceptref": "OBS_CONF"
+                },
+                {
+                  "assignmentstatus": "Conditional",
+                  "attachmentlevel": "Observation",
+                  "codelist": "CL_OBS_ROUND",
+                  "conceptref": "OBS_ROUND"
+                },
+                {
+                  "assignmentstatus": "Conditional",
+                  "attachmentlevel": "Series",
+                  "codelist": "CL_UNIT_MULT",
+                  "conceptref": "UNIT_MULTIPLIER"
+                },
+                {
+                  "assignmentstatus": "Mandatory",
+                  "attachmentlevel": "Series",
+                  "codelist": "CL_TIME_FORMAT",
+                  "conceptref": "TIME_FORMAT"
+                },
+                {
+                  "assignmentstatus": "Mandatory",
+                  "attachmentlevel": "Series",
+                  "codelist": "CL_UNIT",
+                  "conceptref": "UNIT"
+                },
+                {
+                  "assignmentstatus": "Mandatory",
+                  "attachmentlevel": "Series",
+                  "conceptref": "TITLE_COMPL"
+                }
+              ],
+              "dimension": [
+                {
+                  "codelist": "CL_2132_1_GEOGRAPHY",
+                  "conceptref": "GEOGRAPHY"
+                },
+                {
+                  "codelist": "CL_2132_1_C2021_ETH_20",
+                  "conceptref": "C2021_ETH_20"
+                },
+                {
+                  "codelist": "CL_2132_1_C2021_AGE_6",
+                  "conceptref": "C2021_AGE_6"
+                },
+                {
+                  "codelist": "CL_2132_1_C_SEX",
+                  "conceptref": "C_SEX"
+                },
+                {
+                  "codelist": "CL_2132_1_MEASURES",
+                  "conceptref": "MEASURES"
+                },
+                {
+                  "codelist": "CL_2132_1_FREQ",
+                  "conceptref": "FREQ",
+                  "isfrequencydimension": "true"
+                }
+              ],
+              "primarymeasure": {
+                "conceptref": "OBS_VALUE"
+              },
+              "timedimension": {
+                "codelist": "CL_2132_1_TIME",
+                "conceptref": "TIME"
+              }
+            },
+            "name": {
+              "value": "RM032 - Ethnic group by sex by age",
+              "lang": "en"
+            },
+            "uri": "Nm-2132d1",
+            "version": 1.0
+          }
+        ]
+      },
+      "xmlns": "http://www.SDMX.org/resources/SDMXML/schemas/v2_0/message",
+      "common": "http://www.SDMX.org/resources/SDMXML/schemas/v2_0/common",
+      "structure": "http://www.SDMX.org/resources/SDMXML/schemas/v2_0/structure",
+      "xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "schemalocation": "http://sdmx.org/docs/2_0/SDMXMessage.xsd"
+    }
+  },
+  "codes_config": {
+    "ETHNIC_CODES": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19"
+    ],
+    "AGE_CODES": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "SEX_CODES": [
+      "0"
+    ],
+    "MEASURES_CODE": "20100",
+    "DIM_GEOGRAPHY": "geography",
+    "DIM_ETHNIC": "c2021_eth_20",
+    "DIM_AGE": "c2021_age_6",
+    "DIM_SEX": "c_sex",
+    "DIM_MEASURES": "measures",
+    "GEOGRAPHY_TYPE_REGIONS": "TYPE480",
+    "REGION_CODES": [
+      "2013265921",
+      "2013265922",
+      "2013265923",
+      "2013265924",
+      "2013265925",
+      "2013265926",
+      "2013265927",
+      "2013265928",
+      "2013265929",
+      "2013265930"
+    ]
+  }
+}

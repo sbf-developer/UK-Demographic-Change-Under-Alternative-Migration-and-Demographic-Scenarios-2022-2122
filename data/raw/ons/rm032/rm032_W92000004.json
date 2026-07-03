@@ -1,0 +1,382 @@
+{
+  "dimensions": [
+    {
+      "dimension_name": "ctry",
+      "options": [
+        {
+          "href": "",
+          "label": "Wales",
+          "id": "W92000004"
+        }
+      ]
+    },
+    {
+      "dimension_name": "ethnic_group_tb_20b",
+      "options": [
+        {
+          "href": "",
+          "label": "Does not apply",
+          "id": "-8"
+        },
+        {
+          "href": "",
+          "label": "Asian, Asian British or Asian Welsh: Bangladeshi",
+          "id": "1"
+        },
+        {
+          "href": "",
+          "label": "Asian, Asian British or Asian Welsh: Chinese",
+          "id": "2"
+        },
+        {
+          "href": "",
+          "label": "Asian, Asian British or Asian Welsh: Indian",
+          "id": "3"
+        },
+        {
+          "href": "",
+          "label": "Asian, Asian British or Asian Welsh: Pakistani",
+          "id": "4"
+        },
+        {
+          "href": "",
+          "label": "Asian, Asian British or Asian Welsh: Other Asian",
+          "id": "5"
+        },
+        {
+          "href": "",
+          "label": "Black, Black British, Black Welsh, Caribbean or African: African",
+          "id": "6"
+        },
+        {
+          "href": "",
+          "label": "Black, Black British, Black Welsh, Caribbean or African: Caribbean",
+          "id": "7"
+        },
+        {
+          "href": "",
+          "label": "Black, Black British, Black Welsh, Caribbean or African: Other Black",
+          "id": "8"
+        },
+        {
+          "href": "",
+          "label": "Mixed or Multiple ethnic groups: White and Asian",
+          "id": "9"
+        },
+        {
+          "href": "",
+          "label": "Mixed or Multiple ethnic groups: White and Black African",
+          "id": "10"
+        },
+        {
+          "href": "",
+          "label": "Mixed or Multiple ethnic groups: White and Black Caribbean",
+          "id": "11"
+        },
+        {
+          "href": "",
+          "label": "Mixed or Multiple ethnic groups: Other Mixed or Multiple ethnic groups",
+          "id": "12"
+        },
+        {
+          "href": "",
+          "label": "White: English, Welsh, Scottish, Northern Irish or British",
+          "id": "13"
+        },
+        {
+          "href": "",
+          "label": "White: Irish",
+          "id": "14"
+        },
+        {
+          "href": "",
+          "label": "White: Gypsy or Irish Traveller",
+          "id": "15"
+        },
+        {
+          "href": "",
+          "label": "White: Roma",
+          "id": "16"
+        },
+        {
+          "href": "",
+          "label": "White: Other White",
+          "id": "17"
+        },
+        {
+          "href": "",
+          "label": "Other ethnic group: Arab",
+          "id": "18"
+        },
+        {
+          "href": "",
+          "label": "Other ethnic group: Any other ethnic group",
+          "id": "19"
+        }
+      ]
+    },
+    {
+      "dimension_name": "sex",
+      "options": [
+        {
+          "href": "",
+          "label": "Female",
+          "id": "1"
+        },
+        {
+          "href": "",
+          "label": "Male",
+          "id": "2"
+        }
+      ]
+    },
+    {
+      "dimension_name": "resident_age_5c",
+      "options": [
+        {
+          "href": "",
+          "label": "Aged 24 years and under",
+          "id": "1"
+        },
+        {
+          "href": "",
+          "label": "Aged 25 to 34 years",
+          "id": "2"
+        },
+        {
+          "href": "",
+          "label": "Aged 35 to 49 years",
+          "id": "3"
+        },
+        {
+          "href": "",
+          "label": "Aged 50 to 64 years",
+          "id": "4"
+        },
+        {
+          "href": "",
+          "label": "Aged 65 years and over",
+          "id": "5"
+        }
+      ]
+    }
+  ],
+  "links": {
+    "dataset_metadata": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/RM032/editions/2021/versions/1/metadata"
+    },
+    "self": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/RM032",
+      "id": "RM032"
+    },
+    "version": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/RM032/editions/2021/versions/1"
+    }
+  },
+  "observations": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    3411,
+    1361,
+    1766,
+    547,
+    273,
+    3761,
+    1179,
+    1868,
+    936,
+    212,
+    2890,
+    1177,
+    1846,
+    1200,
+    576,
+    2783,
+    1060,
+    1467,
+    957,
+    498,
+    3653,
+    1933,
+    2592,
+    1376,
+    752,
+    3869,
+    1784,
+    2813,
+    1475,
+    823,
+    3563,
+    1458,
+    1938,
+    982,
+    525,
+    3946,
+    1444,
+    2069,
+    1059,
+    550,
+    3697,
+    1696,
+    3653,
+    1839,
+    551,
+    3736,
+    1485,
+    2385,
+    1227,
+    386,
+    4207,
+    1795,
+    2667,
+    922,
+    290,
+    4517,
+    1821,
+    2470,
+    984,
+    233,
+    318,
+    232,
+    353,
+    506,
+    261,
+    413,
+    271,
+    409,
+    589,
+    347,
+    1047,
+    150,
+    318,
+    321,
+    104,
+    1072,
+    203,
+    309,
+    315,
+    108,
+    4421,
+    916,
+    821,
+    597,
+    210,
+    4686,
+    883,
+    752,
+    526,
+    223,
+    2661,
+    422,
+    549,
+    370,
+    151,
+    2644,
+    404,
+    449,
+    287,
+    129,
+    3601,
+    1205,
+    1012,
+    768,
+    355,
+    3673,
+    1077,
+    901,
+    770,
+    369,
+    3281,
+    995,
+    1126,
+    741,
+    330,
+    3452,
+    859,
+    1071,
+    609,
+    298,
+    372073,
+    169198,
+    243546,
+    306831,
+    344989,
+    392192,
+    163927,
+    233123,
+    292036,
+    296329,
+    713,
+    704,
+    1272,
+    1708,
+    2477,
+    764,
+    578,
+    1240,
+    1731,
+    2027,
+    884,
+    253,
+    278,
+    250,
+    120,
+    887,
+    277,
+    281,
+    219,
+    100,
+    282,
+    236,
+    199,
+    77,
+    36,
+    333,
+    318,
+    233,
+    97,
+    33,
+    11669,
+    9179,
+    13794,
+    6724,
+    3584,
+    11106,
+    7282,
+    11765,
+    5346,
+    2547,
+    2615,
+    1064,
+    1067,
+    396,
+    150,
+    3000,
+    1110,
+    1256,
+    704,
+    280,
+    2472,
+    1329,
+    1797,
+    859,
+    383,
+    2866,
+    1407,
+    2205,
+    1074,
+    433
+  ],
+  "total_observations": 200,
+  "blocked_areas": 0,
+  "total_areas": 1,
+  "areas_returned": 1
+}

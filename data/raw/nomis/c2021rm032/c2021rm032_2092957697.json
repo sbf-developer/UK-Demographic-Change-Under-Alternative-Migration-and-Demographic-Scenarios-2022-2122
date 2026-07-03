@@ -1,0 +1,21 @@
+{
+  "header": {
+    "extracted": "2026-07-03T22:30:38Z",
+    "id": "NOMIS-DATA",
+    "prepared": "2026-07-03T22:30:38Z",
+    "sender": {
+      "contact": {
+        "email": "support@nomisweb.co.uk",
+        "name": "Nomis",
+        "telephone": "+441913342680",
+        "uri": "http://www.nomisweb.co.uk"
+      },
+      "id": "NOMIS"
+    },
+    "source": "ONS Crown Copyright Reserved",
+    "test": "false",
+    "truncated": "false",
+    "uri": "https://www.nomisweb.co.uk/api/v01/dataset/NM_2132.data.json?geography=TYPE480,2092957697&sex=5,6&age=1,2,3,4,5&ethnic=10001,10002,20001&measures=20100"
+  },
+  "error": "Query returned no data"
+}
