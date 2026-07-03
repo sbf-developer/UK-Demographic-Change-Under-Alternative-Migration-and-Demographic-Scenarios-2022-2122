@@ -18,7 +18,18 @@ from ukethnicproj.projection.scenarios import (
     load_initial_state,
     load_scenario,
 )
-from ukethnicproj.visualisation.plots import plot_age_pyramid, plot_ethnic_shares_trajectory
+from ukethnicproj.visualisation.plots import (
+    plot_age_pyramid,
+    plot_ethnic_shares_trajectory,
+    plot_scenario_comparison,
+)
+
+EMPIRICAL_SCENARIOS = (
+    "census_2021_mid2022_baseline.yml",
+    "migration_low_2022npp.yml",
+    "migration_high_2022npp.yml",
+    "migration_zero.yml",
+)
 
 console = Console()
 
@@ -91,11 +102,18 @@ def calibrate() -> None:
 
 @main.command("simulate")
 @click.option("--scenario", required=True, type=click.Path(exists=True, path_type=Path))
-@click.option("--end-year", default=2050, type=int, help="Projection end year")
-def simulate(scenario: Path, end_year: int) -> None:
+@click.option(
+    "--end-year",
+    default=None,
+    type=int,
+    help="Projection end year (default: scenario YAML end_year, usually 2122)",
+)
+def simulate(scenario: Path, end_year: int | None) -> None:
     """Run projection for a specified scenario."""
     config = load_scenario(scenario)
+    horizon = end_year if end_year is not None else config.end_year
     console.print(f"[bold]Scenario:[/bold] {config.name}")
+    console.print(f"[bold]Horizon:[/bold] {config.base_year} -> {horizon}")
     console.print(f"[red italic]{config.watermark}[/red italic]")
 
     initial = load_initial_state(config)
@@ -109,7 +127,7 @@ def simulate(scenario: Path, end_year: int) -> None:
 
     result = engine.project(
         initial,
-        end_year=min(end_year, config.end_year),
+        end_year=min(horizon, config.end_year),
         scenario_name=config.name,
         watermark=config.watermark,
     )
@@ -125,7 +143,7 @@ def simulate(scenario: Path, end_year: int) -> None:
         f"",
         f"Model version: A-deterministic-v0.1",
         f"Base year: {config.base_year}",
-        f"End year: {min(end_year, config.end_year)}",
+        f"End year: {min(horizon, config.end_year)}",
         f"Placeholder parameters: {config.placeholder}",
         f"Census base population: {not config.placeholder or config.use_census_base}",
         f"Migration variant: {getattr(config, 'migration_variant', 'n/a')}",
@@ -160,14 +178,111 @@ def simulate(scenario: Path, end_year: int) -> None:
         result,
         nation_idx=0,
         output_path=output_dir / "ethnic_shares_trajectory.png",
+        migration_variant=getattr(config, "migration_variant", None),
+        end_year=min(horizon, config.end_year),
     )
     plot_age_pyramid(
         result.trajectory[-1],
         nation_idx=0,
         output_path=output_dir / "age_pyramid_end.png",
         scenario_name=config.name,
+        migration_variant=getattr(config, "migration_variant", None),
     )
     console.print(f"[green]Figures saved to {output_dir}[/green]")
+
+
+def _run_scenario(scenario_path: Path, end_year: int | None) -> tuple:
+    """Run one scenario and return (config, result)."""
+    config = load_scenario(scenario_path)
+    horizon = end_year if end_year is not None else config.end_year
+    initial = load_initial_state(config)
+    params = create_scenario_parameters(config, state=initial)
+    engine = CohortComponentEngine(params)
+    result = engine.project(
+        initial,
+        end_year=min(horizon, config.end_year),
+        scenario_name=config.name,
+        watermark=config.watermark,
+    )
+    return config, result
+
+
+@main.command("simulate-all")
+@click.option(
+    "--end-year",
+    default=None,
+    type=int,
+    help="Projection end year (default: 2122 from scenario YAML)",
+)
+def simulate_all(end_year: int | None) -> None:
+    """Run all empirical ONS migration scenarios and generate comparison figures."""
+    results: dict = {}
+    variants: dict = {}
+
+    for filename in EMPIRICAL_SCENARIOS:
+        path = SCENARIOS_DIR / filename
+        console.print(f"[bold]Running {path.name}...[/bold]")
+        config, result = _run_scenario(path, end_year)
+        results[config.name] = result
+        variants[config.name] = getattr(config, "migration_variant", None)
+
+        output_dir = OUTPUTS_DIR / config.name
+        output_dir.mkdir(parents=True, exist_ok=True)
+
+        # Reuse simulate summary/plot logic
+        horizon = end_year if end_year is not None else config.end_year
+        summary_lines = [
+            f"# Projection summary: {config.name}",
+            "",
+            f"**{config.watermark}**",
+            "",
+            "Model version: A-deterministic-v0.1",
+            f"Base year: {config.base_year}",
+            f"End year: {min(horizon, config.end_year)}",
+            f"Migration variant: {getattr(config, 'migration_variant', 'n/a')}",
+            "",
+            "## Population totals at report years",
+            "",
+            "| Year | Total population |",
+            "|------|-----------------|",
+        ]
+        for state in result.trajectory:
+            if state.year in REPORT_YEARS or state.year == result.trajectory[-1].year:
+                summary_lines.append(f"| {state.year} | {state.total_population:,.0f} |")
+        summary_lines.extend(["", "## Ethnic shares (England only)", ""])
+        for state in result.trajectory:
+            if state.year in REPORT_YEARS:
+                shares = state.ethnic_shares(nation_idx=0)
+                share_str = ", ".join(f"{k}: {v:.1%}" for k, v in shares.items())
+                summary_lines.append(f"- **{state.year}**: {share_str}")
+        (output_dir / "projection_summary.md").write_text(
+            "\n".join(summary_lines), encoding="utf-8"
+        )
+
+        plot_ethnic_shares_trajectory(
+            result,
+            nation_idx=0,
+            output_path=output_dir / "ethnic_shares_trajectory.png",
+            migration_variant=variants[config.name],
+            end_year=min(horizon, config.end_year),
+        )
+        plot_age_pyramid(
+            result.trajectory[-1],
+            nation_idx=0,
+            output_path=output_dir / "age_pyramid_end.png",
+            scenario_name=config.name,
+            migration_variant=variants[config.name],
+        )
+
+    comparison_dir = OUTPUTS_DIR / "comparison"
+    paths = plot_scenario_comparison(
+        results,
+        migration_variants=variants,
+        output_dir=comparison_dir,
+    )
+    console.print(f"[green]Comparison figures saved to {comparison_dir}[/green]")
+    for p in paths:
+        console.print(f"  {p.name}")
 
 
 @main.command("validate-model")

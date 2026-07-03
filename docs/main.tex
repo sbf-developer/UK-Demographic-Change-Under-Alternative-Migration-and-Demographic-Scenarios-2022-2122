@@ -310,13 +310,51 @@ Historical hindcast validation & Planned & Required before 2122 reporting \\
 
 \section{Scenario design}
 
-Scenarios are defined in YAML configuration files specifying migration variant
-(\texttt{zero}, \texttt{low}, \texttt{principal}, \texttt{high}), fertility variant, nations,
-and identity mode. Policy-relevant scenarios modify measurable quantities---annual
-immigration, emigration, TFR targets, convergence rates---not opaque labels such as
-``strict'' or ``liberal.'' Deterministic outputs are conditional trajectories; they are never
-described as confidence intervals. A planned probabilistic extension will draw parameters from
-$p(\theta)$ following ONS practice \citep{ons2024nppvariants}.
+\subsection{What a scenario specifies}
+
+A scenario is a complete, auditable set of demographic assumptions---not a prediction.
+Each scenario answers a ``what if'' question: \emph{if} fertility, mortality, and migration
+follow these rules every year from mid-2022 onward, \emph{then} what population trajectory
+does the cohort-component model produce? Scenarios are defined in YAML files under
+\texttt{scenarios/}, version-controlled alongside the code.
+
+Every empirical scenario in this paper shares the same Census 2021 base population (England
+and Wales, 60.3 million), the same ONS National Life Tables (2020--2022) mortality schedule,
+and the same principal fertility variant (long-term TFR 1.45). \textbf{Only international
+migration differs} across the four scenarios reported below.
+
+\subsection{ONS 2022-based migration variants}
+
+Migration volumes follow ONS 2022-based national population projection variant definitions
+from year ending mid-2028 onward \citep{ons2024nppmigration, ons2024nppvariants}:
+
+\begin{table}[H]
+\centering
+\caption{Migration scenarios (UK net international migration, long term)}
+\label{tab:migration_scenarios}
+\begin{tabular}{llr}
+\toprule
+\textbf{Scenario file} & \textbf{Label} & \textbf{UK net migration / year} \\
+\midrule
+\texttt{migration\_zero.yml} & Zero net migration & 0 \\
+\texttt{migration\_low\_2022npp.yml} & Low variant & +120,000 \\
+\texttt{census\_2021\_mid2022\_baseline.yml} & Principal variant & +340,000 \\
+\texttt{migration\_high\_2022npp.yml} & High variant & +525,000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Immigration age weights follow Census country-of-birth by age (RM011); ethnic composition of
+inflows follows Census ethnicity $\times$ country-of-birth (RM010). Emigration is allocated
+in proportion to the existing population stock. England and Wales receive approximately 89\%
+of UK flows. A zero-migration counterfactual sets both immigration and emigration to zero,
+isolating natural change (births minus deaths).
+
+Policy-relevant scenarios modify measurable quantities---annual immigration, emigration, TFR
+targets, convergence rates---not opaque labels such as ``strict'' or ``liberal.'' Deterministic
+outputs are conditional trajectories; they are never described as confidence intervals. A
+planned probabilistic extension will draw parameters from $p(\theta)$ following ONS practice
+\citep{ons2024nppvariants}.
 
 \section{Validation strategy}
 \label{sec:accounting}
@@ -338,83 +376,124 @@ Hindcasts from Census 2001 to 2011 and 2011 to 2021/2022 will be conducted befor
 100-year outputs are reported as substantive findings. Metrics include MAE, RMSE, share error,
 and coverage. MAPE will be reported only for groups above a minimum population threshold.
 
-\section{Conditional scenario results, 2022--2050}
+\section{Conditional scenario results, 2022--2122}
 
 All results below refer to England and Wales combined unless noted. The base population is
-60,278,591 (mid-2022). Projections run to 2050; the research design specifies 2122, but
-outputs beyond 2050 require completed hindcast validation.
+60,278,591 (mid-2022). Projections run to 2122 as specified in each scenario YAML file.
+Earlier published figures stopped at 2050 because the command-line interface defaulted to
+\texttt{--end-year 2050}; the default now uses each scenario's configured horizon (2122).
+Report years are 2030, 2040, 2050, 2075, 2100, and 2122.
 
-Table~\ref{tab:scenarios} compares total population and England White share at 2050 under
-four migration scenarios, holding fertility at the ONS principal variant (long-term TFR 1.45)
-and mortality at ONS 2020--2022 life tables. Net migration volumes refer to UK totals under
-ONS 2022-based variant definitions from year ending mid-2028 onward.
+Table~\ref{tab:scenarios} reports total population at key years under four migration
+scenarios. Table~\ref{tab:white_share} reports the White share in England at the same years.
+All scenarios hold fertility at the ONS principal variant (long-term TFR 1.45) and mortality
+at ONS 2020--2022 life tables.
 
 \begin{table}[H]
 \centering
-\caption{Conditional projections to 2050 by ONS 2022-based migration variant}
+\caption{Total population (England and Wales) by migration scenario and report year}
 \label{tab:scenarios}
-\begin{tabular}{lrrrr}
+\small
+\begin{tabular}{lrrrrrr}
 \toprule
-\textbf{Scenario} & \textbf{2030 pop.} & \textbf{2040 pop.} & \textbf{2050 pop.} & \textbf{White share (Eng.), 2050} \\
+\textbf{Scenario} & \textbf{2030} & \textbf{2040} & \textbf{2050} & \textbf{2075} & \textbf{2100} & \textbf{2122} \\
 \midrule
-Zero migration & 59.2M & 56.5M & 52.7M & 72.2\% \\
-Low ($+$120k net UK) & 60.1M & 58.5M & 55.9M & 70.0\% \\
-Principal ($+$340k net UK) & 61.7M & 63.5M & 64.9M & 66.3\% \\
-High ($+$525k net UK) & 63.3M & 68.6M & 72.7M & 63.5\% \\
+Zero migration & 59.2M & 56.5M & 52.7M & 39.2M & 25.2M & 16.0M \\
+Low ($+$120k net UK) & 60.1M & 58.5M & 55.9M & 45.9M & 34.1M & 26.0M \\
+Principal ($+$340k net UK) & 61.7M & 63.5M & 64.9M & 61.2M & 52.3M & 47.9M \\
+High ($+$525k net UK) & 63.3M & 68.6M & 72.7M & 74.1M & 70.2M & 69.6M \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Under zero migration, natural decrease dominates: population falls to 52.7 million by 2050
-despite ethnic diversification through differential fertility and cohort ageing. Under the
-principal ONS variant, population rises modestly to 64.9 million; the White share in England
-falls from 81.0\% to 76.7\% by 2030 and 71.4\% by 2040, reaching 66.3\% in 2050---a decline
-of approximately 15 percentage points over 28 years driven primarily by net immigration and
-the ethnic composition of inflows, not by extreme fertility differentials alone. The
-high-migration variant amplifies both total growth (72.7 million) and ethnic diversification
-(White share 63.5\%). Asian and Mixed groups account for the largest share gains under higher
-migration scenarios; Black and Other groups rise more modestly in absolute share terms but
-remain non-negligible components of projected diversification.
+\begin{table}[H]
+\centering
+\caption{White population share in England by migration scenario and report year}
+\label{tab:white_share}
+\small
+\begin{tabular}{lrrrrrr}
+\toprule
+\textbf{Scenario} & \textbf{2030} & \textbf{2040} & \textbf{2050} & \textbf{2075} & \textbf{2100} & \textbf{2122} \\
+\midrule
+Zero migration & 78.6\% & 75.4\% & 72.2\% & 64.7\% & 55.9\% & 49.4\% \\
+Low ($+$120k net UK) & 77.9\% & 73.9\% & 70.0\% & 60.5\% & 49.3\% & 39.9\% \\
+Principal ($+$340k net UK) & 76.7\% & 71.4\% & 66.3\% & 54.0\% & 40.2\% & 34.7\% \\
+High ($+$525k net UK) & 75.8\% & 69.5\% & 63.5\% & 49.5\% & 38.7\% & 37.7\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Under zero migration, natural decrease dominates throughout: population falls to 52.7 million
+by 2050 and 16.0 million by 2122, despite ethnic diversification through differential fertility
+and cohort ageing (White share falls from 81.0\% to 49.4\% over the century). Under the
+principal ONS variant, population rises to a mid-century peak of 64.9 million (2050), then
+declines to 47.9 million by 2122 as sub-replacement fertility (TFR 1.45) eventually produces
+more deaths than births even with net immigration of 340,000 per year. The White share in
+England falls from 81.0\% to 66.3\% by 2050 and 34.7\% by 2122. The high-migration variant
+sustains higher population levels (69.6 million in 2122) and faster ethnic diversification
+(White share 37.7\% in 2122). Asian and Mixed groups account for the largest share gains
+under higher migration scenarios across the full horizon.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\textwidth]{../outputs/census_2021_mid2022_baseline/ethnic_shares_trajectory.png}
-\caption{Ethnic population shares in England under the principal ONS 2022-based migration
-variant (Census 2021 base, mid-2022). Wales is included in population totals but excluded
-from this figure. \emph{Conditional projection only; not a forecast.}}
+\includegraphics[width=0.95\textwidth]{../outputs/comparison/comparison_total_population.png}
+\caption{Total England and Wales population under four ONS 2022-based migration scenarios,
+2022--2122. Fertility and mortality held constant; migration is the only varying input.
+\emph{Conditional projection only; not a forecast.}}
+\label{fig:comparison_pop}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\textwidth]{../outputs/comparison/comparison_white_share_england.png}
+\caption{White population share in England under four migration scenarios, 2022--2122.
+Higher net migration produces faster diversification of ethnic composition under the
+calibrated parameter set.}
+\label{fig:comparison_white}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.98\textwidth]{../outputs/census_2021_mid2022_baseline/ethnic_shares_trajectory.png}
+\caption{Ethnic population shares and counts in England under the principal ONS 2022-based
+migration variant (Census 2021 base, mid-2022), 2022--2122. Wales is included in population
+totals but excluded from share panels. \emph{Conditional projection only; not a forecast.}}
 \label{fig:baseline}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\textwidth]{../outputs/migration_high_2022npp/ethnic_shares_trajectory.png}
-\caption{Ethnic population shares in England under the high ONS 2022-based migration variant.
-Same fertility and mortality assumptions as Figure~\ref{fig:baseline}; migration volume is
-the sole difference. \emph{Conditional projection only; not a forecast.}}
-\label{fig:high}
+\includegraphics[width=0.98\textwidth]{../outputs/comparison/comparison_ethnic_shares_panel.png}
+\caption{Ethnic composition in England by migration scenario (small multiples), 2022--2122.
+Each panel shows the same five ethnic groups under a different ONS migration variant.}
+\label{fig:comparison_panel}
 \end{figure}
 
-Figures~\ref{fig:baseline} and~\ref{fig:high} illustrate that migration assumptions dominate
-long-run ethnic composition trajectories, consistent with prior UK ethnic projection literature
-\citep{coleman2010, wohland2010}. The model does not attribute causal policy effects; it
-reports arithmetic consequences of specified demographic inputs.
+Figures~\ref{fig:comparison_pop}--\ref{fig:comparison_panel} show that migration assumptions
+dominate both population scale and ethnic composition trajectories, consistent with prior UK
+ethnic projection literature \citep{coleman2010, wohland2010}. The model does not attribute
+causal policy effects; it reports arithmetic consequences of specified demographic inputs.
+Long-horizon outputs to 2122 remain conditional and unvalidated---historical hindcasts are
+required before treating century-scale trajectories as empirically credible forecasts.
 
 \section{What this study can and cannot say}
 
 \textbf{Can say:}
 \begin{itemize}
     \item Under ONS 2022-based principal migration assumptions, a transparent cohort-component
-    model starting from Census 2021 projects 64.9 million England and Wales residents by 2050,
-    with declining White share in England.
+    model starting from Census 2021 projects a mid-century peak of 64.9 million England and
+    Wales residents (2050), with White share in England falling to 34.7\% by 2122 under the
+    same assumptions.
     \item Migration scenario choice materially affects both population scale and ethnic
-    composition; the range across ONS variants spans 52.7--72.7 million by 2050.
+    composition; the 2122 population range spans 16.0--69.6 million across ONS variants.
     \item The pipeline is reproducible: all inputs are official aggregate tables with cached
     API responses and checksums.
 \end{itemize}
 
 \textbf{Cannot yet say:}
 \begin{itemize}
-    \item How ethnic composition will evolve to 2122 with validated accuracy.
+    \item How ethnic composition will evolve to 2122 with \emph{validated} accuracy (hindcast
+    not yet completed).
     \item Which assumptions contribute most to uncertainty (probabilistic mode not implemented).
     \item Whether the model would have projected Census 2011 or 2021 correctly (no hindcast).
     \item Results for Scotland, Northern Ireland, or the full UK total.

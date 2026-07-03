@@ -18,12 +18,14 @@ python -m ukethnicproj calibrate
 # 2. Build mid-2022 base population (~60.3M from Census 2021 + ONS MYE)
 python -m ukethnicproj build-base-population
 
-# 3. Run projections under ONS 2022-based scenario variants
+# 3. Run all projections to 2122 (default) and generate comparison charts
+python -m ukethnicproj simulate-all
+
+# Or run individual scenarios (defaults to 2122 from scenario YAML)
 python -m ukethnicproj simulate --scenario scenarios/census_2021_mid2022_baseline.yml
-python -m ukethnicproj simulate --scenario scenarios/migration_low_2022npp.yml
-python -m ukethnicproj simulate --scenario scenarios/migration_high_2022npp.yml
-python -m ukethnicproj simulate --scenario scenarios/migration_zero.yml
 ```
+
+See [`docs/scenarios.md`](docs/scenarios.md) for a plain-language guide to scenarios, the model, and how to read the figures.
 
 **Data sources (all official):**
 - Census 2021 RM032, RM010, RM011 (ONS)
