@@ -1,0 +1,607 @@
+{
+  "header": {
+    "extracted": "2026-07-03T23:13:56Z",
+    "id": "NOMIS-DATA",
+    "prepared": "2026-07-03T23:13:56Z",
+    "sender": {
+      "contact": {
+        "email": "support@nomisweb.co.uk",
+        "name": "Nomis",
+        "telephone": "+441913342680",
+        "uri": "http://www.nomisweb.co.uk"
+      },
+      "id": "NOMIS"
+    },
+    "source": "ONS Crown Copyright Reserved",
+    "test": "false",
+    "truncated": "false",
+    "uri": "https://www.nomisweb.co.uk/api/v01/dataset/NM_203_1.data.json?geography=2092957703&date=2022&measures=20100&gender=0&multiple=0&registration_type=0&cob_mother=0"
+  },
+  "obs": [
+    {
+      "dataset": {
+        "value": "NM_203_1",
+        "description": "Live births in England and Wales by sex and characteristics of mother: national/regional"
+      },
+      "geography": {
+        "value": 2092957703,
+        "description": "England and Wales",
+        "geogcode": "K04000001"
+      },
+      "gender": {
+        "value": 0,
+        "description": "Total"
+      },
+      "multiple": {
+        "value": 0,
+        "description": "Total"
+      },
+      "registration_type": {
+        "value": 0,
+        "description": "Total"
+      },
+      "cob_mother": {
+        "value": 0,
+        "description": "Total"
+      },
+      "age_of_mother": {
+        "value": 0,
+        "description": "Total"
+      },
+      "measures": {
+        "value": 20100,
+        "description": "Value"
+      },
+      "freq": "A",
+      "time_format": {
+        "value": "P1Y",
+        "description": "Annual"
+      },
+      "unit": {
+        "value": "LBR",
+        "description": "Live births"
+      },
+      "time": {
+        "value": 2022,
+        "description": 2022
+      },
+      "obs_value": {
+        "value": 605342,
+        "description": "Live births Value for England and Wales (geography) for 2022 from Live births in England and Wales [restricted access]"
+      },
+      "obs_status": {
+        "value": "A",
+        "description": "Normal Value"
+      },
+      "obs_conf": {
+        "value": "F",
+        "description": "Free (free for publication)"
+      },
+      "obs_round": {
+        "value": 1,
+        "description": "Rounded to 1"
+      },
+      "urn": "Nm-202d1d32352e0d2092957703d0d0d0d0d0d0d0d1d20100"
+    },
+    {
+      "dataset": {
+        "value": "NM_203_1",
+        "description": "Live births in England and Wales by sex and characteristics of mother: national/regional"
+      },
+      "geography": {
+        "value": 2092957703,
+        "description": "England and Wales",
+        "geogcode": "K04000001"
+      },
+      "gender": {
+        "value": 0,
+        "description": "Total"
+      },
+      "multiple": {
+        "value": 0,
+        "description": "Total"
+      },
+      "registration_type": {
+        "value": 0,
+        "description": "Total"
+      },
+      "cob_mother": {
+        "value": 0,
+        "description": "Total"
+      },
+      "age_of_mother": {
+        "value": 101,
+        "description": "Mother aged under 20"
+      },
+      "measures": {
+        "value": 20100,
+        "description": "Value"
+      },
+      "freq": "A",
+      "time_format": {
+        "value": "P1Y",
+        "description": "Annual"
+      },
+      "unit": {
+        "value": "LBR",
+        "description": "Live births"
+      },
+      "time": {
+        "value": 2022,
+        "description": 2022
+      },
+      "obs_value": {
+        "value": 14751,
+        "description": "Live births Value for England and Wales (geography), Mother aged under 20 (Age of mother) for 2022 from Live births in England and Wales [restricted access]"
+      },
+      "obs_status": {
+        "value": "A",
+        "description": "Normal Value"
+      },
+      "obs_conf": {
+        "value": "F",
+        "description": "Free (free for publication)"
+      },
+      "obs_round": {
+        "value": 1,
+        "description": "Rounded to 1"
+      },
+      "urn": "Nm-202d1d32352e0d2092957703d0d0d0d0d0d0d1a2a3a4a5d1d20100"
+    },
+    {
+      "dataset": {
+        "value": "NM_203_1",
+        "description": "Live births in England and Wales by sex and characteristics of mother: national/regional"
+      },
+      "geography": {
+        "value": 2092957703,
+        "description": "England and Wales",
+        "geogcode": "K04000001"
+      },
+      "gender": {
+        "value": 0,
+        "description": "Total"
+      },
+      "multiple": {
+        "value": 0,
+        "description": "Total"
+      },
+      "registration_type": {
+        "value": 0,
+        "description": "Total"
+      },
+      "cob_mother": {
+        "value": 0,
+        "description": "Total"
+      },
+      "age_of_mother": {
+        "value": 103,
+        "description": "Mother aged 20-24"
+      },
+      "measures": {
+        "value": 20100,
+        "description": "Value"
+      },
+      "freq": "A",
+      "time_format": {
+        "value": "P1Y",
+        "description": "Annual"
+      },
+      "unit": {
+        "value": "LBR",
+        "description": "Live births"
+      },
+      "time": {
+        "value": 2022,
+        "description": 2022
+      },
+      "obs_value": {
+        "value": 72995,
+        "description": "Live births Value for England and Wales (geography), Mother aged 20-24 (Age of mother) for 2022 from Live births in England and Wales [restricted access]"
+      },
+      "obs_status": {
+        "value": "A",
+        "description": "Normal Value"
+      },
+      "obs_conf": {
+        "value": "F",
+        "description": "Free (free for publication)"
+      },
+      "obs_round": {
+        "value": 1,
+        "description": "Rounded to 1"
+      },
+      "urn": "Nm-202d1d32352e0d2092957703d0d0d0d0d0d0d6a7a8a9a10d1d20100"
+    },
+    {
+      "dataset": {
+        "value": "NM_203_1",
+        "description": "Live births in England and Wales by sex and characteristics of mother: national/regional"
+      },
+      "geography": {
+        "value": 2092957703,
+        "description": "England and Wales",
+        "geogcode": "K04000001"
+      },
+      "gender": {
+        "value": 0,
+        "description": "Total"
+      },
+      "multiple": {
+        "value": 0,
+        "description": "Total"
+      },
+      "registration_type": {
+        "value": 0,
+        "description": "Total"
+      },
+      "cob_mother": {
+        "value": 0,
+        "description": "Total"
+      },
+      "age_of_mother": {
+        "value": 104,
+        "description": "Mother aged 25-29"
+      },
+      "measures": {
+        "value": 20100,
+        "description": "Value"
+      },
+      "freq": "A",
+      "time_format": {
+        "value": "P1Y",
+        "description": "Annual"
+      },
+      "unit": {
+        "value": "LBR",
+        "description": "Live births"
+      },
+      "time": {
+        "value": 2022,
+        "description": 2022
+      },
+      "obs_value": {
+        "value": 157488,
+        "description": "Live births Value for England and Wales (geography), Mother aged 25-29 (Age of mother) for 2022 from Live births in England and Wales [restricted access]"
+      },
+      "obs_status": {
+        "value": "A",
+        "description": "Normal Value"
+      },
+      "obs_conf": {
+        "value": "F",
+        "description": "Free (free for publication)"
+      },
+      "obs_round": {
+        "value": 1,
+        "description": "Rounded to 1"
+      },
+      "urn": "Nm-202d1d32352e0d2092957703d0d0d0d0d0d0d11a12a13a14a15d1d20100"
+    },
+    {
+      "dataset": {
+        "value": "NM_203_1",
+        "description": "Live births in England and Wales by sex and characteristics of mother: national/regional"
+      },
+      "geography": {
+        "value": 2092957703,
+        "description": "England and Wales",
+        "geogcode": "K04000001"
+      },
+      "gender": {
+        "value": 0,
+        "description": "Total"
+      },
+      "multiple": {
+        "value": 0,
+        "description": "Total"
+      },
+      "registration_type": {
+        "value": 0,
+        "description": "Total"
+      },
+      "cob_mother": {
+        "value": 0,
+        "description": "Total"
+      },
+      "age_of_mother": {
+        "value": 105,
+        "description": "Mother aged 30-34"
+      },
+      "measures": {
+        "value": 20100,
+        "description": "Value"
+      },
+      "freq": "A",
+      "time_format": {
+        "value": "P1Y",
+        "description": "Annual"
+      },
+      "unit": {
+        "value": "LBR",
+        "description": "Live births"
+      },
+      "time": {
+        "value": 2022,
+        "description": 2022
+      },
+      "obs_value": {
+        "value": 207130,
+        "description": "Live births Value for England and Wales (geography), Mother aged 30-34 (Age of mother) for 2022 from Live births in England and Wales [restricted access]"
+      },
+      "obs_status": {
+        "value": "A",
+        "description": "Normal Value"
+      },
+      "obs_conf": {
+        "value": "F",
+        "description": "Free (free for publication)"
+      },
+      "obs_round": {
+        "value": 1,
+        "description": "Rounded to 1"
+      },
+      "urn": "Nm-202d1d32352e0d2092957703d0d0d0d0d0d0d16a17a18a19a20d1d20100"
+    },
+    {
+      "dataset": {
+        "value": "NM_203_1",
+        "description": "Live births in England and Wales by sex and characteristics of mother: national/regional"
+      },
+      "geography": {
+        "value": 2092957703,
+        "description": "England and Wales",
+        "geogcode": "K04000001"
+      },
+      "gender": {
+        "value": 0,
+        "description": "Total"
+      },
+      "multiple": {
+        "value": 0,
+        "description": "Total"
+      },
+      "registration_type": {
+        "value": 0,
+        "description": "Total"
+      },
+      "cob_mother": {
+        "value": 0,
+        "description": "Total"
+      },
+      "age_of_mother": {
+        "value": 106,
+        "description": "Mother aged 35-39"
+      },
+      "measures": {
+        "value": 20100,
+        "description": "Value"
+      },
+      "freq": "A",
+      "time_format": {
+        "value": "P1Y",
+        "description": "Annual"
+      },
+      "unit": {
+        "value": "LBR",
+        "description": "Live births"
+      },
+      "time": {
+        "value": 2022,
+        "description": 2022
+      },
+      "obs_value": {
+        "value": 121754,
+        "description": "Live births Value for England and Wales (geography), Mother aged 35-39 (Age of mother) for 2022 from Live births in England and Wales [restricted access]"
+      },
+      "obs_status": {
+        "value": "A",
+        "description": "Normal Value"
+      },
+      "obs_conf": {
+        "value": "F",
+        "description": "Free (free for publication)"
+      },
+      "obs_round": {
+        "value": 1,
+        "description": "Rounded to 1"
+      },
+      "urn": "Nm-202d1d32352e0d2092957703d0d0d0d0d0d0d21a22a23a24a25d1d20100"
+    },
+    {
+      "dataset": {
+        "value": "NM_203_1",
+        "description": "Live births in England and Wales by sex and characteristics of mother: national/regional"
+      },
+      "geography": {
+        "value": 2092957703,
+        "description": "England and Wales",
+        "geogcode": "K04000001"
+      },
+      "gender": {
+        "value": 0,
+        "description": "Total"
+      },
+      "multiple": {
+        "value": 0,
+        "description": "Total"
+      },
+      "registration_type": {
+        "value": 0,
+        "description": "Total"
+      },
+      "cob_mother": {
+        "value": 0,
+        "description": "Total"
+      },
+      "age_of_mother": {
+        "value": 107,
+        "description": "Mother aged 40-44"
+      },
+      "measures": {
+        "value": 20100,
+        "description": "Value"
+      },
+      "freq": "A",
+      "time_format": {
+        "value": "P1Y",
+        "description": "Annual"
+      },
+      "unit": {
+        "value": "LBR",
+        "description": "Live births"
+      },
+      "time": {
+        "value": 2022,
+        "description": 2022
+      },
+      "obs_value": {
+        "value": 28677,
+        "description": "Live births Value for England and Wales (geography), Mother aged 40-44 (Age of mother) for 2022 from Live births in England and Wales [restricted access]"
+      },
+      "obs_status": {
+        "value": "A",
+        "description": "Normal Value"
+      },
+      "obs_conf": {
+        "value": "F",
+        "description": "Free (free for publication)"
+      },
+      "obs_round": {
+        "value": 1,
+        "description": "Rounded to 1"
+      },
+      "urn": "Nm-202d1d32352e0d2092957703d0d0d0d0d0d0d26a27a28a29a30d1d20100"
+    },
+    {
+      "dataset": {
+        "value": "NM_203_1",
+        "description": "Live births in England and Wales by sex and characteristics of mother: national/regional"
+      },
+      "geography": {
+        "value": 2092957703,
+        "description": "England and Wales",
+        "geogcode": "K04000001"
+      },
+      "gender": {
+        "value": 0,
+        "description": "Total"
+      },
+      "multiple": {
+        "value": 0,
+        "description": "Total"
+      },
+      "registration_type": {
+        "value": 0,
+        "description": "Total"
+      },
+      "cob_mother": {
+        "value": 0,
+        "description": "Total"
+      },
+      "age_of_mother": {
+        "value": 108,
+        "description": "Mother aged 45 and over"
+      },
+      "measures": {
+        "value": 20100,
+        "description": "Value"
+      },
+      "freq": "A",
+      "time_format": {
+        "value": "P1Y",
+        "description": "Annual"
+      },
+      "unit": {
+        "value": "LBR",
+        "description": "Live births"
+      },
+      "time": {
+        "value": 2022,
+        "description": 2022
+      },
+      "obs_value": {
+        "value": 2534,
+        "description": "Live births Value for England and Wales (geography), Mother aged 45 and over (Age of mother) for 2022 from Live births in England and Wales [restricted access]"
+      },
+      "obs_status": {
+        "value": "A",
+        "description": "Normal Value"
+      },
+      "obs_conf": {
+        "value": "F",
+        "description": "Free (free for publication)"
+      },
+      "obs_round": {
+        "value": 1,
+        "description": "Rounded to 1"
+      },
+      "urn": "Nm-202d1d32352e0d2092957703d0d0d0d0d0d0d31a32d1d20100"
+    },
+    {
+      "dataset": {
+        "value": "NM_203_1",
+        "description": "Live births in England and Wales by sex and characteristics of mother: national/regional"
+      },
+      "geography": {
+        "value": 2092957703,
+        "description": "England and Wales",
+        "geogcode": "K04000001"
+      },
+      "gender": {
+        "value": 0,
+        "description": "Total"
+      },
+      "multiple": {
+        "value": 0,
+        "description": "Total"
+      },
+      "registration_type": {
+        "value": 0,
+        "description": "Total"
+      },
+      "cob_mother": {
+        "value": 0,
+        "description": "Total"
+      },
+      "age_of_mother": {
+        "value": 109,
+        "description": "Age of mother unknown or not stated"
+      },
+      "measures": {
+        "value": 20100,
+        "description": "Value"
+      },
+      "freq": "A",
+      "time_format": {
+        "value": "P1Y",
+        "description": "Annual"
+      },
+      "unit": {
+        "value": "LBR",
+        "description": "Live births"
+      },
+      "time": {
+        "value": 2022,
+        "description": 2022
+      },
+      "obs_value": {
+        "value": 13,
+        "description": "Live births Value for England and Wales (geography), Age of mother unknown or not stated (Age of mother) for 2022 from Live births in England and Wales [restricted access]"
+      },
+      "obs_status": {
+        "value": "A",
+        "description": "Normal Value"
+      },
+      "obs_conf": {
+        "value": "F",
+        "description": "Free (free for publication)"
+      },
+      "obs_round": {
+        "value": 1,
+        "description": "Rounded to 1"
+      },
+      "urn": "Nm-202d1d32352e0d2092957703d0d0d0d0d0d0d33d1d20100"
+    }
+  ]
+}

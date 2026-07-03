@@ -1,0 +1,238 @@
+{
+  "dimensions": [
+    {
+      "dimension_name": "ctry",
+      "options": [
+        {
+          "href": "",
+          "label": "England",
+          "id": "E92000001"
+        }
+      ]
+    },
+    {
+      "dimension_name": "country_of_birth_12a",
+      "options": [
+        {
+          "href": "",
+          "label": "Does not apply",
+          "id": "-8"
+        },
+        {
+          "href": "",
+          "label": "Europe: United Kingdom",
+          "id": "1"
+        },
+        {
+          "href": "",
+          "label": "Europe: EU countries: European Union EU14",
+          "id": "2"
+        },
+        {
+          "href": "",
+          "label": "Europe: EU countries: European Union EU8",
+          "id": "3"
+        },
+        {
+          "href": "",
+          "label": "Europe: EU countries: European Union EU2",
+          "id": "4"
+        },
+        {
+          "href": "",
+          "label": "Europe: EU countries: All other EU countries",
+          "id": "5"
+        },
+        {
+          "href": "",
+          "label": "Europe: Non-EU countries: All other non-EU countries",
+          "id": "6"
+        },
+        {
+          "href": "",
+          "label": "Africa",
+          "id": "7"
+        },
+        {
+          "href": "",
+          "label": "Middle East and Asia",
+          "id": "8"
+        },
+        {
+          "href": "",
+          "label": "The Americas and the Caribbean",
+          "id": "9"
+        },
+        {
+          "href": "",
+          "label": "Antarctica and Oceania (including Australasia) and Other",
+          "id": "10"
+        },
+        {
+          "href": "",
+          "label": "British Overseas",
+          "id": "11"
+        }
+      ]
+    },
+    {
+      "dimension_name": "ethnic_group_tb_8a",
+      "options": [
+        {
+          "href": "",
+          "label": "Does not apply",
+          "id": "-8"
+        },
+        {
+          "href": "",
+          "label": "Asian, Asian British or Asian Welsh",
+          "id": "1"
+        },
+        {
+          "href": "",
+          "label": "Black, Black British, Black Welsh, Caribbean or African",
+          "id": "2"
+        },
+        {
+          "href": "",
+          "label": "Mixed or Multiple ethnic groups",
+          "id": "3"
+        },
+        {
+          "href": "",
+          "label": "White: English, Welsh, Scottish, Northern Irish or British",
+          "id": "4"
+        },
+        {
+          "href": "",
+          "label": "White: Irish",
+          "id": "5"
+        },
+        {
+          "href": "",
+          "label": "White: Gypsy or Irish Traveller, Roma or Other White",
+          "id": "6"
+        },
+        {
+          "href": "",
+          "label": "Other ethnic group",
+          "id": "7"
+        }
+      ]
+    }
+  ],
+  "links": {
+    "dataset_metadata": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/RM010/editions/2021/versions/1/metadata"
+    },
+    "self": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/RM010",
+      "id": "RM010"
+    },
+    "version": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/RM010/editions/2021/versions/1"
+    }
+  },
+  "observations": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    2480454,
+    1159056,
+    1363166,
+    40425856,
+    216870,
+    647778,
+    394324,
+    0,
+    81346,
+    98170,
+    56144,
+    288357,
+    259676,
+    735838,
+    59140,
+    0,
+    1396,
+    838,
+    7842,
+    123479,
+    579,
+    1026850,
+    29406,
+    0,
+    930,
+    581,
+    6621,
+    76796,
+    1074,
+    554394,
+    36820,
+    0,
+    388,
+    253,
+    2079,
+    44798,
+    247,
+    42404,
+    15318,
+    0,
+    9657,
+    4032,
+    9812,
+    92936,
+    882,
+    306197,
+    67544,
+    0,
+    192704,
+    870036,
+    63193,
+    177571,
+    4413,
+    110419,
+    137520,
+    0,
+    2631013,
+    7822,
+    60671,
+    114749,
+    1454,
+    41987,
+    384002,
+    0,
+    21177,
+    227830,
+    89040,
+    114817,
+    6403,
+    216742,
+    97368,
+    0,
+    6109,
+    1919,
+    8322,
+    76530,
+    2580,
+    65336,
+    7208,
+    0,
+    1216,
+    11187,
+    2486,
+    4899,
+    72,
+    414,
+    501
+  ],
+  "total_observations": 96,
+  "blocked_areas": 0,
+  "total_areas": 1,
+  "areas_returned": 1
+}

@@ -1,0 +1,54 @@
+---
+# ONS 2022-based National Population Projections — variant assumptions
+# Sources:
+#   https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/methodologies/nationalpopulationprojectionsvariantprojections2022based
+#   https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/methodologies/nationalpopulationprojectionsmigrationassumptions2022based
+
+source: "ONS 2022-based national population projections"
+reference_year: 2022
+long_term_from_year: 2028
+
+# England & Wales share of UK totals (MYE mid-2022; recomputed on calibration)
+ew_share_default: 0.891
+
+migration_variants:
+  zero:
+    label: "Zero net international migration"
+    uk_net_migration: 0
+    uk_immigration: 0
+    uk_emigration: 0
+  low:
+    label: "Low migration variant (ONS 2022-based)"
+    uk_net_migration: 120000
+    uk_immigration: 302353   # preserves principal I/O ratio 858/518
+    uk_emigration: 182353
+  principal:
+    label: "Principal migration variant (ONS 2022-based)"
+    uk_net_migration: 340000
+    uk_immigration: 858000
+    uk_emigration: 518000
+  high:
+    label: "High migration variant (ONS 2022-based)"
+    uk_net_migration: 525000
+    uk_immigration: 1325294
+    uk_emigration: 800294
+
+fertility_variants:
+  low:
+    label: "Low fertility variant"
+    long_term_tfr: 1.25
+  principal:
+    label: "Principal fertility variant"
+    long_term_tfr: 1.45
+  high:
+    label: "High fertility variant"
+    long_term_tfr: 1.65
+
+mortality:
+  source: "ONS National Life Tables, UK: 2020 to 2022"
+  sheet: "2020-2022"
+  xlsx_uri: "/peoplepopulationandcommunity/birthsdeathsandmarriages/lifeexpectancies/datasets/nationallifetablesunitedkingdomreferencetables/current/nltuk198020223.xlsx"
+
+births:
+  dataset: NM_203_1
+  geography_code: "2092957703"  # England and Wales

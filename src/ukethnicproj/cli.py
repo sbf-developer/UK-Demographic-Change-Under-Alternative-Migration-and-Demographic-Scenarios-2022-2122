@@ -9,12 +9,13 @@ from rich.console import Console
 
 from ukethnicproj import REPORT_YEARS, WATERMARK, __version__
 from ukethnicproj.config import OUTPUTS_DIR, REPORTS_DIR, SCENARIOS_DIR
+from ukethnicproj.base_population.builder import build_base_population
 from ukethnicproj.data_sources.ingest import discover_datasets, fetch_all_data, validate_data
 from ukethnicproj.harmonisation.schema import save_mapping_table
 from ukethnicproj.projection.engine import CohortComponentEngine
 from ukethnicproj.projection.scenarios import (
-    create_placeholder_initial_state,
-    create_placeholder_parameters,
+    create_scenario_parameters,
+    load_initial_state,
     load_scenario,
 )
 from ukethnicproj.visualisation.plots import plot_age_pyramid, plot_ethnic_shares_trajectory
@@ -54,19 +55,38 @@ def data_validate() -> None:
 
 
 @main.command("build-base-population")
-def build_base_population() -> None:
-    """Build harmonised mid-2022 base population (Phase 2)."""
+@click.option("--nation", multiple=True, type=click.Choice(["england", "wales"]))
+def build_base_population_cmd(nation: tuple[str, ...]) -> None:
+    """Build harmonised mid-2022 base population from Census 2021 RM032 + MYE."""
     save_mapping_table()
-    console.print("[yellow]Phase 1: harmonisation schema created.[/yellow]")
-    console.print(
-        "[yellow]Full mid-2022 base population requires Census data processing (Phase 2).[/yellow]"
-    )
+    nations = tuple(nation) if nation else ("england", "wales")
+    console.print(f"[bold]Building base population for:[/bold] {', '.join(nations)}")
+
+    state, report = build_base_population(nations=nations, base_year=2022)
+
+    console.print(f"[green]Total population: {state.total_population:,.0f}[/green]")
+    for n in nations:
+        console.print(
+            f"  {n}: census {report.census_totals[n]:,.0f} -> "
+            f"MYE mid-2022 {report.mye_totals[n]:,.0f}"
+        )
+        shares = report.ethnic_shares[n]
+        share_str = ", ".join(f"{k} {v:.1%}" for k, v in shares.items())
+        console.print(f"    Ethnic shares: {share_str}")
+    console.print(f"[green]Saved to {report.output_path}[/green]")
+    console.print(f"[yellow]{report.generation_note}[/yellow]")
 
 
 @main.command("calibrate")
 def calibrate() -> None:
-    """Calibrate model parameters from historical data (Phase 4)."""
-    console.print("[yellow]Calibration not yet implemented (Phase 4).[/yellow]")
+    """Fetch and cache official datasets for empirical parameter calibration."""
+    from ukethnicproj.calibration.fetch import fetch_all_calibration_data
+
+    console.print("[bold]Fetching calibration datasets...[/bold]")
+    fetched = fetch_all_calibration_data(force=False)
+    for name, path in fetched.items():
+        console.print(f"[green]{name}:[/green] {path}")
+    console.print("[green]Calibration data ready.[/green]")
 
 
 @main.command("simulate")
@@ -78,9 +98,14 @@ def simulate(scenario: Path, end_year: int) -> None:
     console.print(f"[bold]Scenario:[/bold] {config.name}")
     console.print(f"[red italic]{config.watermark}[/red italic]")
 
-    initial = create_placeholder_initial_state(config)
-    params = create_placeholder_parameters(config)
+    initial = load_initial_state(config)
+    params = create_scenario_parameters(config, state=initial)
     engine = CohortComponentEngine(params)
+
+    console.print(
+        f"[bold]Initial population:[/bold] {initial.total_population:,.0f} "
+        f"({'Census 2021 + MYE 2022' if not config.placeholder else 'placeholder'})"
+    )
 
     result = engine.project(
         initial,
@@ -102,6 +127,10 @@ def simulate(scenario: Path, end_year: int) -> None:
         f"Base year: {config.base_year}",
         f"End year: {min(end_year, config.end_year)}",
         f"Placeholder parameters: {config.placeholder}",
+        f"Census base population: {not config.placeholder or config.use_census_base}",
+        f"Migration variant: {getattr(config, 'migration_variant', 'n/a')}",
+        f"Fertility variant: {getattr(config, 'fertility_variant', 'n/a')}",
+        f"Mortality: ONS National Life Tables 2020-2022",
         f"",
         f"> Under the specified assumptions, the model projects conditional trajectories.",
         f"> This is not a prediction of future population composition.",

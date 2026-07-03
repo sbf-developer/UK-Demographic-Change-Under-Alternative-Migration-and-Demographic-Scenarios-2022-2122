@@ -20,6 +20,7 @@ dependencies = [
     "matplotlib>=3.8",
     "click>=8.1",
     "rich>=13.7",
+    "openpyxl>=3.1",
 ]
 
 [project.optional-dependencies]

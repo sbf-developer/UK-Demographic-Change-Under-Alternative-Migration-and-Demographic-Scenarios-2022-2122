@@ -1,0 +1,44 @@
+# Counterfactual: zero net international migration (natural change only)
+
+name: migration_zero
+description: >
+  Census 2021 base with international immigration and emigration set to zero.
+  Shows natural change (births minus deaths) only.
+
+base_year: 2022
+end_year: 2122
+watermark: >
+  Zero-migration counterfactual. Not a prediction or policy recommendation.
+placeholder: false
+use_census_base: true
+migration_variant: zero
+fertility_variant: principal
+
+nations:
+  - england
+  - wales
+
+ethnic_groups:
+  - white
+  - mixed
+  - asian
+  - black
+  - other
+
+migration:
+  composition: {}
+
+fertility:
+  uk_tfr: 1.45
+  kappa:
+    white: 0.05
+    asian: 0.03
+    black: 0.04
+    mixed: 0.06
+    other: 0.05
+
+identity:
+  mode: fixed
+
+mortality: ons_2020_2022
+seed: 42

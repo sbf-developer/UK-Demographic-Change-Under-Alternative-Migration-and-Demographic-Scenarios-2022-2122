@@ -3,10 +3,34 @@
 A transparent, reproducible population-projection system examining how the self-identified ethnic composition of the United Kingdom could evolve under alternative demographic assumptions.
 
 **Author:** Scott Brodie Forsyth  
-**Version:** 0.1.0 (Phase 1)  
+**Version:** 0.2.0 (England & Wales empirical calibration)  
 **Licence:** MIT
 
-> **Important:** This system produces conditional demographic trajectories under specified assumptions. It is not a prediction of what will happen. All Phase 1 outputs are methodological demonstrations using placeholder parameters.
+> **Important:** This system produces conditional demographic trajectories under specified assumptions. It is not a prediction of what will happen. Use `census_2021_mid2022_baseline` for real Census 2021 base population (England & Wales); the illustrative scenario remains for engine testing only.
+
+## Real data workflow (England & Wales)
+
+```bash
+# 1. Fetch official Census, MYE, life tables, births, country-of-birth tables
+python -m ukethnicproj data fetch
+python -m ukethnicproj calibrate
+
+# 2. Build mid-2022 base population (~60.3M from Census 2021 + ONS MYE)
+python -m ukethnicproj build-base-population
+
+# 3. Run projections under ONS 2022-based scenario variants
+python -m ukethnicproj simulate --scenario scenarios/census_2021_mid2022_baseline.yml
+python -m ukethnicproj simulate --scenario scenarios/migration_low_2022npp.yml
+python -m ukethnicproj simulate --scenario scenarios/migration_high_2022npp.yml
+python -m ukethnicproj simulate --scenario scenarios/migration_zero.yml
+```
+
+**Data sources (all official):**
+- Census 2021 RM032, RM010, RM011 (ONS)
+- Mid-year population estimates NM_2002_1 (Nomis/ONS)
+- Live births by mother's age NM_203_1 (Nomis/ONS)
+- National Life Tables 2020-2022 (ONS xlsx)
+- Migration/fertility variants: ONS 2022-based national population projections
 
 ## Research question
 

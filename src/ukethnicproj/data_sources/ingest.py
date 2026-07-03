@@ -65,6 +65,16 @@ def fetch_all_data() -> dict[str, Path | str]:
             fetched["nomis_c2021rm032_all_regions"] = f"FAILED: {exc}"
             console.print(f"[yellow]Nomis C2021RM032 failed: {exc}[/yellow]")
 
+    try:
+        from ukethnicproj.calibration.fetch import fetch_all_calibration_data
+
+        cal = fetch_all_calibration_data(force=False)
+        fetched.update({f"calibration_{k}": v for k, v in cal.items()})
+        console.print("[green]Fetched calibration datasets (life tables, births, COB)[/green]")
+    except Exception as exc:
+        fetched["calibration"] = f"FAILED: {exc}"
+        console.print(f"[yellow]Calibration fetch failed: {exc}[/yellow]")
+
     # Consolidate manifests
     for source in ("ons", "nomis"):
         manifest_path = RAW_DIR / source / "manifest.jsonl"

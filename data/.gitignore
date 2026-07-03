@@ -1,1 +1,4 @@
 # Raw data is never committed; use data fetch commands
+
+# Processed arrays are reproducible via build-base-population
+processed/*.npz

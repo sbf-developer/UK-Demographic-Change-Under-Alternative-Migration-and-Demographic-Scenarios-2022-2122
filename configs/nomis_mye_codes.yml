@@ -1,0 +1,28 @@
+---
+# Nomis NM_2002_1: mid-year population estimates by single year of age
+# Source: https://www.nomisweb.co.uk/datasets/pestsyoala
+
+DATASET_ID: NM_2002_1
+MEASURES_CODE: "20100"
+DIM_GEOGRAPHY: geography
+DIM_GENDER: gender
+DIM_AGE: c_age
+DIM_MEASURES: measures
+DIM_DATE: date
+
+# Nomis internal geography codes (mid-2022 rebased series)
+NATION_GEO_CODES:
+  england: "2092957699"
+  wales: "2013265930"
+
+# gender: 1 = male, 2 = female (0 = total aggregate — do not use when summing)
+GENDER_MALE: "1"
+GENDER_FEMALE: "2"
+
+# RM032 resident_age_5c_id → inclusive age range for disaggregation
+RM032_AGE_BANDS:
+  "1": [0, 24]    # Aged 24 years and under
+  "2": [25, 34]   # Aged 25 to 34 years
+  "3": [35, 49]   # Aged 35 to 49 years
+  "4": [50, 64]   # Aged 50 to 64 years
+  "5": [65, 100]  # Aged 65 years and over (open-ended to age 100)

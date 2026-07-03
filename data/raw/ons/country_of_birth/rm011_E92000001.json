@@ -1,0 +1,204 @@
+{
+  "dimensions": [
+    {
+      "dimension_name": "ctry",
+      "options": [
+        {
+          "href": "",
+          "label": "England",
+          "id": "E92000001"
+        }
+      ]
+    },
+    {
+      "dimension_name": "country_of_birth_12a",
+      "options": [
+        {
+          "href": "",
+          "label": "Does not apply",
+          "id": "-8"
+        },
+        {
+          "href": "",
+          "label": "Europe: United Kingdom",
+          "id": "1"
+        },
+        {
+          "href": "",
+          "label": "Europe: EU countries: European Union EU14",
+          "id": "2"
+        },
+        {
+          "href": "",
+          "label": "Europe: EU countries: European Union EU8",
+          "id": "3"
+        },
+        {
+          "href": "",
+          "label": "Europe: EU countries: European Union EU2",
+          "id": "4"
+        },
+        {
+          "href": "",
+          "label": "Europe: EU countries: All other EU countries",
+          "id": "5"
+        },
+        {
+          "href": "",
+          "label": "Europe: Non-EU countries: All other non-EU countries",
+          "id": "6"
+        },
+        {
+          "href": "",
+          "label": "Africa",
+          "id": "7"
+        },
+        {
+          "href": "",
+          "label": "Middle East and Asia",
+          "id": "8"
+        },
+        {
+          "href": "",
+          "label": "The Americas and the Caribbean",
+          "id": "9"
+        },
+        {
+          "href": "",
+          "label": "Antarctica and Oceania (including Australasia) and Other",
+          "id": "10"
+        },
+        {
+          "href": "",
+          "label": "British Overseas",
+          "id": "11"
+        }
+      ]
+    },
+    {
+      "dimension_name": "resident_age_6a",
+      "options": [
+        {
+          "href": "",
+          "label": "Aged 15 years and under",
+          "id": "1"
+        },
+        {
+          "href": "",
+          "label": "Aged 16 to 24 years",
+          "id": "2"
+        },
+        {
+          "href": "",
+          "label": "Aged 25 to 34 years",
+          "id": "3"
+        },
+        {
+          "href": "",
+          "label": "Aged 35 to 49 years",
+          "id": "4"
+        },
+        {
+          "href": "",
+          "label": "Aged 50 to 64 years",
+          "id": "5"
+        },
+        {
+          "href": "",
+          "label": "Aged 65 years and over",
+          "id": "6"
+        }
+      ]
+    }
+  ],
+  "links": {
+    "dataset_metadata": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/RM011/editions/2021/versions/1/metadata"
+    },
+    "self": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/RM011",
+      "id": "RM011"
+    },
+    "version": {
+      "href": "https://api.beta.ons.gov.uk/v1/datasets/RM011/editions/2021/versions/1"
+    }
+  },
+  "observations": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    9777896,
+    5002159,
+    5700463,
+    7789215,
+    9192486,
+    9225287,
+    181325,
+    193030,
+    308731,
+    379711,
+    240645,
+    275231,
+    78226,
+    133734,
+    305349,
+    508728,
+    126089,
+    38264,
+    59570,
+    85330,
+    226818,
+    230041,
+    65016,
+    10438,
+    4341,
+    7734,
+    10984,
+    14956,
+    31511,
+    35961,
+    36202,
+    47623,
+    123691,
+    174558,
+    77052,
+    31938,
+    66717,
+    125926,
+    238537,
+    520564,
+    404851,
+    199261,
+    208050,
+    312595,
+    579875,
+    1092456,
+    634213,
+    414512,
+    53905,
+    66742,
+    134996,
+    210719,
+    159394,
+    147621,
+    15202,
+    11687,
+    35259,
+    53212,
+    35422,
+    17222,
+    1657,
+    2669,
+    3162,
+    4279,
+    3441,
+    5567
+  ],
+  "total_observations": 72,
+  "blocked_areas": 0,
+  "total_areas": 1,
+  "areas_returned": 1
+}

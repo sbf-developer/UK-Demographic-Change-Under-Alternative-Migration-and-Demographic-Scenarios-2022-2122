@@ -52,6 +52,38 @@ class ScenarioConfig(BaseModel):
     mortality: str = "common"
     seed: int = 42
     placeholder: bool = True
+    use_census_base: bool = False
+    migration_variant: str = "principal"  # zero, low, principal, high (ONS 2022-based NPP)
+    fertility_variant: str = "principal"  # low, principal, high (ONS 2022-based NPP)
+
+
+def load_initial_state(config: ScenarioConfig) -> PopulationState:
+    """Load initial population from Census base or placeholder generator."""
+    if config.use_census_base or not config.placeholder:
+        from ukethnicproj.base_population.builder import (
+            base_population_available,
+            build_base_population,
+            load_base_population,
+        )
+
+        nations = tuple(config.nations)
+        if not base_population_available():
+            build_base_population(nations=nations, base_year=config.base_year)
+        return load_base_population(nations=nations)
+    return create_placeholder_initial_state(config)
+
+
+def create_scenario_parameters(
+    config: ScenarioConfig,
+    state: PopulationState | None = None,
+) -> ProjectionParameters:
+    """Create projection parameters from official data or placeholders."""
+    if config.use_census_base or not config.placeholder:
+        from ukethnicproj.calibration.parameters import build_empirical_parameters
+
+        pop = state or load_initial_state(config)
+        return build_empirical_parameters(config, pop)
+    return create_placeholder_parameters(config)
 
 
 def load_scenario(path: Path) -> ScenarioConfig:

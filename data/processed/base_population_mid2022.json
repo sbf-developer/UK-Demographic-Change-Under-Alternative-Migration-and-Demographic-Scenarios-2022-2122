@@ -1,0 +1,45 @@
+{
+  "base_year": 2022,
+  "nations": [
+    "england",
+    "wales"
+  ],
+  "total_population": 60278590.99999999,
+  "census_totals": {
+    "england": 56490037.0,
+    "wales": 3107487.0
+  },
+  "mye_totals": {
+    "england": 57144395.0,
+    "wales": 3134195.9999999995
+  },
+  "scaled_totals": {
+    "england": 57144395.0,
+    "wales": 3134195.999999999
+  },
+  "ethnic_shares": {
+    "england": {
+      "white": 0.810468490222444,
+      "mixed": 0.0295517774222736,
+      "asian": 0.09605920420976181,
+      "black": 0.04216184174211111,
+      "other": 0.021758686403409513
+    },
+    "wales": {
+      "white": 0.9383295891503328,
+      "mixed": 0.015637716263977933,
+      "asian": 0.028649194670806344,
+      "black": 0.008866328322532,
+      "other": 0.00851717159235099
+    }
+  },
+  "reference_totals": {
+    "england": 56489800,
+    "wales": 3107500
+  },
+  "generation_note": "Generation assigned from Census 2021 RM010 (ethnic x country of birth) and RM011 (country of birth x age). UK-born with foreign-born parents not separately identified until parental COB linkage (Phase 2b).",
+  "data_sources": [
+    "ONS Census 2021 RM032 (ethnic group \u00d7 sex \u00d7 age band)",
+    "Nomis NM_2002_1 mid-year population estimates 2022 (age disaggregation)"
+  ]
+}

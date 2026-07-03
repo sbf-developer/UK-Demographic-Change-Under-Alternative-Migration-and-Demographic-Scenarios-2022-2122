@@ -1,0 +1,44 @@
+# ONS 2022-based NPP — low migration variant (net +120k UK / year from YE mid-2028)
+
+name: migration_low_2022npp
+description: >
+  Census 2021 base with ONS 2022-based low migration variant assumptions.
+  Long-term UK net migration +120,000 per year (England & Wales scaled).
+
+base_year: 2022
+end_year: 2122
+watermark: >
+  Conditional projection under ONS 2022-based low migration variant. Not a prediction.
+placeholder: false
+use_census_base: true
+migration_variant: low
+fertility_variant: principal
+
+nations:
+  - england
+  - wales
+
+ethnic_groups:
+  - white
+  - mixed
+  - asian
+  - black
+  - other
+
+migration:
+  composition: {}
+
+fertility:
+  uk_tfr: 1.45
+  kappa:
+    white: 0.05
+    asian: 0.03
+    black: 0.04
+    mixed: 0.06
+    other: 0.05
+
+identity:
+  mode: fixed
+
+mortality: ons_2020_2022
+seed: 42

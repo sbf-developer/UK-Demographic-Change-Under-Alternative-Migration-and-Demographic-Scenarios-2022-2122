@@ -1,0 +1,53 @@
+# Census 2021 base + ONS 2022-based NPP principal variant assumptions
+# All parameters calibrated from official ONS/Nomis/Census data.
+
+name: census_2021_mid2022_baseline
+description: >
+  Conditional projection from Census 2021 RM032 base (England and Wales),
+  with mortality from ONS National Life Tables 2020-2022, fertility from
+  Nomis live births 2022 and Census ethnic fertility differentials, and
+  migration from ONS 2022-based NPP principal variant (net +340k UK / year).
+
+base_year: 2022
+end_year: 2122
+watermark: >
+  Conditional projection under ONS 2022-based principal assumptions.
+  Not a prediction. Ethnic trajectories depend on specified migration,
+  fertility, and mortality scenarios.
+placeholder: false
+use_census_base: true
+migration_variant: principal
+fertility_variant: principal
+
+nations:
+  - england
+  - wales
+
+ethnic_groups:
+  - white
+  - mixed
+  - asian
+  - black
+  - other
+
+migration:
+  annual_immigration: 0
+  annual_emigration: 0
+  composition: {}
+
+fertility:
+  convergence: moderate
+  uk_tfr: 1.45
+  kappa:
+    white: 0.05
+    asian: 0.03
+    black: 0.04
+    mixed: 0.06
+    other: 0.05
+
+identity:
+  mode: fixed
+  switching_rate: 0.0
+
+mortality: ons_2020_2022
+seed: 42
