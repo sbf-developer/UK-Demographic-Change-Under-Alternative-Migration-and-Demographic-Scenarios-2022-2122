@@ -45,14 +45,14 @@ Each scenario is defined in a YAML file under `scenarios/` and includes:
 
 All four use the **same** Census 2021 base, fertility (principal, TFR 1.45), and mortality. **Only migration differs.**
 
-| Scenario file | ONS variant | UK net migration (from YE mid-2028 onward) | Purpose |
+| Scenario file | ONS variant | UK net migration (long-term ONS volumes) | Purpose |
 |---------------|-------------|------------------------------------------|---------|
 | `migration_zero.yml` | Zero | 0 / year | Counterfactual: natural change only (births − deaths) |
 | `migration_low_2022npp.yml` | Low | +120,000 / year | Lower immigration envelope |
 | `census_2021_mid2022_baseline.yml` | Principal | +340,000 / year | ONS central assumption |
 | `migration_high_2022npp.yml` | High | +525,000 / year | Higher immigration envelope |
 
-England and Wales receive ~89% of UK migration flows (scaled by mid-2022 population share).
+**Implementation note:** These long-term volumes are applied as constant annual flows from the first projection year. The ONS phased transition to long-term assumptions over 2022–2028 is not yet modelled. Mortality is fixed at 2020–2022 with no improvement; aggregate totals are not benchmarked to ONS principal NPP population outputs.
 
 Immigration **age profile** comes from Census country-of-birth by age (RM011). Immigration **ethnic composition** comes from Census ethnicity × country-of-birth (RM010). Emigration is proportional to the existing population stock.
 

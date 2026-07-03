@@ -59,8 +59,9 @@ Census country-of-birth tables.
 Under the principal ONS migration variant, the model projects 64.9 million residents in
 England and Wales by 2050, with the White share in England falling from 81.0\% (2022) to
 66.3\%; under the high-migration variant, population reaches 72.7 million with a White share
-of 63.5\%. Under zero net migration, population falls to 52.7 million. All outputs are
-conditional on stated assumptions. Extension to Scotland and Northern Ireland, historical
+of 63.5\%. Under zero net migration, population falls to 52.7 million by 2050. All outputs are
+conditional on stated assumptions; century-scale trajectories require hindcast validation
+before substantive interpretation. Extension to Scotland and Northern Ireland, historical
 hindcasts, probabilistic uncertainty, and partnership-based fertility remain future work.
 \end{abstract}
 
@@ -106,9 +107,9 @@ identities. Second, it implements reproducible ingestion of Census 2021 and ONS/
 aggregate tables for England and Wales, with version-controlled ethnic harmonisation.
 Third, it calibrates mortality, fertility, and migration parameters from official sources,
 including ONS 2022-based national population projection (NPP) migration variants
-\citep{ons2024nppvariants}. Fourth, it reports conditional scenario results to 2050 under
-those assumptions, illustrating how migration volume affects both population scale and ethnic
-composition.
+\citep{ons2024nppvariants}. Fourth, it reports conditional scenario results to 2122 under
+those assumptions---with explicit validation caveats---illustrating how migration volume
+affects both population scale and ethnic composition.
 
 \subsection{Scope and remaining limitations}
 
@@ -118,9 +119,16 @@ not yet linked, so UK-born persons with foreign-born parents cannot be distingui
 those with two UK-born parents. Partnership-weighted fertility and census-estimated child
 ethnicity assignment remain rule-based approximations pending linkage to census household
 and parental-ethnicity tables. Fertility convergence by duration of residence is specified
-but not yet applied in the projection engine. No historical hindcast has been completed;
-outputs to 2122 should not be interpreted as forecasts until validation against Census 2011
-and 2021 is reported.
+but not yet applied in the projection engine. Migration long-term volumes from ONS NPP are
+applied as constant annual flows from the first projection step (mid-2022 to mid-2023); the
+ONS transition path to long-term assumptions over 2022--2028 is not yet implemented.
+Mortality is held at the 2020--2022 period schedule with no projected improvement; fertility
+schedules are static after calibration. Realized emigration may fall below the assumed outflow
+when age-specific stocks are insufficient (flows are capped at available population). Aggregate
+England and Wales population totals are not benchmarked to ONS principal NPP population
+outputs, which incorporate mortality improvement and other features not yet modelled here.
+No historical hindcast has been completed; outputs to 2122 should not be interpreted as
+forecasts until validation against Census 2011 and 2021 is reported.
 
 \section{Conceptual framework}
 
@@ -243,11 +251,14 @@ limitations in the harmonisation metadata.
 
 \subsection{Migration scenarios}
 
-Migration volumes follow ONS 2022-based NPP long-term assumptions from year ending mid-2028
-onward \citep{ons2024nppmigration}: principal net migration of 340,000 per year for the UK
+Migration volumes follow ONS 2022-based NPP long-term assumptions
+\citep{ons2024nppmigration}: principal net migration of 340,000 per year for the UK
 (immigration 858,000; emigration 518,000), with low (+120,000) and high (+525,000) variants.
-England and Wales receive approximately 89\% of UK flows, based on the mid-2022 population
-share. A zero-migration counterfactual sets both immigration and emigration to zero.
+These long-term volumes are applied as constant annual flows from the first projection year
+in the current engine; the ONS short-run transition to long-term assumptions (from year
+ending mid-2028) is not yet modelled. England and Wales receive approximately 89\% of UK
+flows, based on the mid-2022 population share. A zero-migration counterfactual sets both
+immigration and emigration to zero.
 
 Table~\ref{tab:data} summarises official data sources and calibration status.
 
@@ -295,7 +306,7 @@ Table~\ref{tab:implementation} summarises model components.
 \textbf{Component} & \textbf{Status} & \textbf{Notes} \\
 \midrule
 Cohort ageing and survival & Implemented & ONS NLT 2020--2022 \\
-Immigration / emigration (fixed flows) & Implemented & ONS NPP variants \\
+Immigration / emigration (constant annual flows) & Implemented & ONS NPP long-term volumes \\
 Ethnic identity matrix $Q$ & Implemented & Fixed identity (diagonal) \\
 Births from maternal ASFR & Implemented & Nomis 2022 + Census ethnic scalars \\
 Child generation from parent nativity & Partial & RM010/RM011; no parental COB \\
@@ -326,7 +337,7 @@ migration differs} across the four scenarios reported below.
 \subsection{ONS 2022-based migration variants}
 
 Migration volumes follow ONS 2022-based national population projection variant definitions
-from year ending mid-2028 onward \citep{ons2024nppmigration, ons2024nppvariants}:
+\citep{ons2024nppmigration, ons2024nppvariants}. Long-term UK net migration volumes are:
 
 \begin{table}[H]
 \centering
@@ -346,7 +357,9 @@ from year ending mid-2028 onward \citep{ons2024nppmigration, ons2024nppvariants}
 
 Immigration age weights follow Census country-of-birth by age (RM011); ethnic composition of
 inflows follows Census ethnicity $\times$ country-of-birth (RM010). Emigration is allocated
-in proportion to the existing population stock. England and Wales receive approximately 89\%
+in proportion to the existing population stock, with elevated weights at working ages. Long-term
+volumes are applied as constant annual flows from the first projection year (the ONS
+2022--2028 transition path is not yet modelled). England and Wales receive approximately 89\%
 of UK flows. A zero-migration counterfactual sets both immigration and emigration to zero,
 isolating natural change (births minus deaths).
 
@@ -427,9 +440,12 @@ Under zero migration, natural decrease dominates throughout: population falls to
 by 2050 and 16.0 million by 2122, despite ethnic diversification through differential fertility
 and cohort ageing (White share falls from 81.0\% to 49.4\% over the century). Under the
 principal ONS variant, population rises to a mid-century peak of 64.9 million (2050), then
-declines to 47.9 million by 2122 as sub-replacement fertility (TFR 1.45) eventually produces
-more deaths than births even with net immigration of 340,000 per year. The White share in
-England falls from 81.0\% to 66.3\% by 2050 and 34.7\% by 2122. The high-migration variant
+declines to 47.9 million by 2122 as sub-replacement fertility (TFR 1.45) and a fixed
+2020--2022 mortality schedule eventually produce more deaths than births even with net
+immigration of 340,000 per year at UK level. This long-run decline is a \emph{model output
+under static assumptions}; it is not a claim that ONS principal NPP aggregate totals follow
+the same path (ONS incorporates mortality improvement and a phased migration transition).
+The White share in England falls from 81.0\% to 66.3\% by 2050 and 34.7\% by 2122. The high-migration variant
 sustains higher population levels (69.6 million in 2122) and faster ethnic diversification
 (White share 37.7\% in 2122). Asian and Mixed groups account for the largest share gains
 under higher migration scenarios across the full horizon.
@@ -497,6 +513,8 @@ required before treating century-scale trajectories as empirically credible fore
     \item Which assumptions contribute most to uncertainty (probabilistic mode not implemented).
     \item Whether the model would have projected Census 2011 or 2021 correctly (no hindcast).
     \item Results for Scotland, Northern Ireland, or the full UK total.
+    \item That aggregate population totals match ONS principal NPP outputs (this model uses
+    ONS migration volumes but not the full ONS projection system).
     \item Effects of specific immigration policy reforms (scenarios are demographic, not policy models).
 \end{itemize}
 
@@ -504,9 +522,11 @@ required before treating century-scale trajectories as empirically credible fore
 
 This paper specifies and implements a reproducible ethnic population-projection system for
 England and Wales, calibrated from Census 2021 and ONS/Nomis official statistics. Under
-ONS 2022-based migration variants, conditional trajectories to 2050 show substantial
+ONS 2022-based migration variants, conditional trajectories to 2122 show substantial
 sensitivity of both population scale and ethnic composition to migration assumptions---a
 finding consistent with prior UK ethnic projection research \citep{coleman2010, wohland2010}.
+Mid-century results (e.g.\ 64.9 million under principal migration in 2050) are more informative
+than century-scale totals until hindcast validation is complete.
 The system treats ethnicity as self-identified and changeable, models immigration and
 emigration separately, and enforces population accounting identities at each annual step.
 
